@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春季</title>
+    <style>
+               * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            background-color: #2c3e50;
+            box-shadow: 0 2px 10px rgba(190, 189, 189, 0.1);
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fffefe;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            padding-right: 7%;
+        }
+        
+        .contact {
+            margin-right: 20px;
+            font-size: 14px;
+        }
+        
+        .contact a {
+            text-decoration: none;
+            color: #fdfcfc;
+            margin: 0 10px;
+        }
+        
+        .contact a:hover {
+            color: #ff6a00;
+        }
+        
+        .button-group {
+            display: flex;
+        }
+        
+        .login-btn {
+            margin-right: 15px;
+            padding: 8px 20px;
+            background-color: transparent;
+            border: 1px solid #ff6a00;
+            color: #ff6a00;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .login-btn:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
+        
+        .register-btn {
+            padding: 8px 20px;
+            background-color: #ff6a00;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .register-btn:hover {
+            background-color: #e65c00;
+        }
+        
+        .main-nav {
+            background-color: #f8f8f8;
+            padding: 0px 50px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-icon {
+            width: 70px;
+            height: 70px;
+            padding-left: 10.5%;
+        }
+        .nav-icon img {
+            width: 80px;
+            height: 80px;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding-right: 7%;
+            
+        }
+        .menu-toggle{display:none}
+        .nav-menu li {
+            margin: 0 30px;
+        }
+        
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        .nav-menu a:hover, 
+        .nav-menu a.active {
+            color: #ff6a00;
+        }
+        
+        .nav-menu a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6a00;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        @media (max-width: 1200px) {
+            .nav-menu li {
+            margin: 0 20px;
+        }
+        }
+        @media (max-width: 1020px) {
+            .nav-menu li {
+            margin: 0 10px;
+        }
+        }       
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 870px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .nav-icon{display:none}
+            .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 30px;
+        }
+            .nav-menu {
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 20px 0;
+                background-color: #f8f8f8;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                margin: 0 15px;
+            }
+        }
+
+        .placeholder-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            margin: 15px 0;
+        }
+
+         /* 夏季茶饮页面样式 */
+    .summer-tea-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding:0 20px;
+
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .tea-item {
+        margin-bottom: 40px;
+        margin-left: 10%;
+        margin-right: 10%;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .tea-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #e8420a;
+        margin-left: 40px;
+    }
+
+    .tea-content {
+        display: flex;
+        gap: 20px;
+    }
+
+    .tea-image {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .tea-description {
+        flex: 1;
+    }
+
+    .tea-description h3 {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .tea-description ul, .tea-description ol {
+        padding-left: 20px;
+    }
+
+    .tea-description p {
+        line-height: 1.6;
+        color: #666;
+    }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            width: 86%;
+        }
+      
+        .header-container a {
+            text-emphasis: none;
+            text-decoration: none;
+            color: #333;   
+        }
+        .header-container a h3 {
+            background-color: #333;
+            color: #333;
+            transition: color 0.3s;    
+        }
+
+        .header-container a:hover {
+            color: #333;
+        }
+
+        .header-container a h3 {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .header-container .STYLE20 {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        .header-container .STYLE20 {
+            margin-left: auto;
+        }
+         /* 底部 footer */
+        .footer { 
+            background-color: #f4f4f4; 
+            padding: 10px; 
+            text-align: center; 
+        } 
+
+        .footer a { 
+            color: #333; 
+            text-decoration: none; 
+            margin: 0 15px; 
+        } 
+
+        .footer-links {
+            background-color: #f4f4f4; 
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 5px 0;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .footer-links a {
+            color: #333; 
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .footer-links a:hover {
+            color: rgb(22, 22, 22);
+        }
+        
+        .footer-links a:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+            color: #666;
+        }
+        
+        /* 版权声明区域样式 */ 
+        .copyright { 
+            background-color: #f4f4f4; 
+            padding: 8px 15px; 
+            text-align: center; 
+            font-size: 12px; 
+            color: #666; 
+        } 
+
+        /* 返回顶部按钮 */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        #backToTopBtn.show {
+            opacity: 1;
+        }
+
+        #backToTopBtn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 50px 0 20px;
+            }
+             .logo {
+                padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                margin-left: 45px;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            .services {
+                display: none;
+            }
+            .tea-content {
+                flex-direction: column;
+            }
+            .tea-image {
+                width: 100%;
+                height: auto;;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+                padding-right: 50px;
+            }
+            .hamburger {
+                padding: 0;
+    
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .contact a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            
+            .nav-icon {
+                padding-left: 5%;
+            }
+            
+            .nav-menu {
+                padding: 10px 0;
+            }
+            .logo-text {
+            font-size: 19px;
+            }
+        }
+         @media (max-width: 390px) {
+            .logo-text {
+            font-size: 16px;
+
+        }
+        }
+    </style>
+</head>
+<body>
+    <!--头部-->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+
+                <span class="logo-text">饮食之道</span>
+            </a>
+        </div>
+       <div class="header-right">
+            <div class="button-group">
+                <a href="login-register.html?action=signin" class="login-btn">登录</a>
+                <a href="login-register.html?action=register" class="register-btn">注册</a>
+            </div>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+             
+        
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-icon">
+                <img src="images/logo.png" alt="饮食之道">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="act">首页</a></li>
+                <li><a href="dietary.html">食疗养生</a></li>
+                <li><a href="drink.html">养生茶饮</a></li>
+                <li><a href="newest.html">养生社区</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- 春季节气茶饮页面内容 -->
+    <div class="spring-tea-container">
+        <h1 class="section-title">春季节气茶饮</h1>
+        <div class="header-container">
+            <span class="STYLE20">您的位置>
+                <a href="index.html">首页</a>>
+                <a href="drink.html">养生茶饮</a>>春季节气茶饮
+            </span>
+        </div>
+        <!-- 立春茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">立春 - 桂圆红枣茶</h2>
+            <div class="tea-content">
+                <img src="./images/drink/spring1.jpg" alt="桂圆红枣茶" class="tea-image">
+                <div class="tea-description">
+                    <p>立春时节，阳气渐升，桂圆红枣茶可补血养颜、健脾暖胃。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>桂圆干 5 颗</li>
+                        <li>红枣 3 颗</li>
+                        <li>冰糖适量</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将桂圆干、红枣洗净，红枣去核。</li>
+                        <li>把桂圆干、红枣放入锅中，加入适量清水，大火煮开后转小火煮 15 - 20 分钟。</li>
+                        <li>加入冰糖，搅拌至融化即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 雨水茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">雨水 - 陈皮普洱茶</h2>
+            <div class="tea-content">
+                <img src="./images/drink/spring2.jpg" alt="陈皮普洱茶" class="tea-image">
+                <div class="tea-description">
+                    <p>雨水时节，湿气渐重，陈皮普洱茶可理气健脾、祛湿化痰。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>陈皮 5 克</li>
+                        <li>普洱茶 3 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将陈皮和普洱茶放入茶壶中。</li>
+                        <li>用沸水冲泡，第一泡倒掉，然后再次用沸水冲泡，焖泡 3 - 5 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 惊蛰茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">惊蛰 - 金银花茶</h2>
+            <div class="tea-content">
+                <img src="./images/drink/spring3.jpg" alt="金银花茶" class="tea-image">
+                <div class="tea-description">
+                    <p>惊蛰时节，万物复苏，细菌滋生，金银花茶可清热解毒、疏散风热。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>金银花 10 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将金银花放入杯中。</li>
+                        <li>用开水冲泡，焖泡 5 - 10 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 春分茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">春分 - 薄荷绿茶</h2>
+            <div class="tea-content">
+                <img src="./images/drink/spring4.jpg" alt="薄荷绿茶" class="tea-image">
+                <div class="tea-description">
+                    <p>春分时节，气候多变，薄荷绿茶有疏散风热、清利头目之效。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>绿茶 5 克</li>
+                        <li>薄荷叶 3 - 5 片</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将绿茶和薄荷叶放入杯中。</li>
+                        <li>用 80℃ 左右的热水冲泡，焖泡 3 - 5 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 清明茶饮-->
+        <div class="tea-item">
+            <h2 class="tea-title">清明 - 菊花枸杞茶</h2>
+            <div class="tea-content">
+                <img src="./images/drink/spring5.jpg" alt="菊花枸杞茶" class="tea-image">
+                <div class="tea-description">
+                    <p>清明前后，天气渐暖，菊花枸杞茶可清肝明目、滋补肝肾。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>菊花 5 朵</li>
+                        <li>枸杞 10 颗</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将菊花和枸杞放入杯中。</li>
+                        <li>用开水冲泡，焖泡 5 - 10 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 谷雨茶饮-->
+        <div class="tea-item">
+            <h2 class="tea-title">谷雨 - 玫瑰花茶</h2>
+            <div class="tea-content">
+                <img src="./images/drink/spring6.jpg" alt="玫瑰花茶" class="tea-image">
+                <div class="tea-description">
+                    <p>谷雨时节，气温升高，玫瑰花茶能理气解郁、活血散瘀。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>干玫瑰花 8 - 10 朵</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将干玫瑰花放入杯中。</li>
+                        <li>用开水冲泡，焖泡 3 - 5 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 底部 footer -->
+    <div class="footer"> 
+        <a href="gywm.html">关于我们</a> 
+        <a href="lxwm.html">联系我们</a> 
+        <a href="privacy.html">隐私政策</a> 
+        <a href="terms.html">使用条款</a> 
+        <a href="ditu.html">网站地图</a> 
+        <a href="liuyan.html">留言</a>
+    </div> 
+     <!-- 友情链接 -->
+    <div class="footer-links">
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+       
+    </div>
+    <!-- 版权声明 -->
+    <div class="copyright">
+      本网站所有信息未经授权禁止转载、摘编、复制及建立镜像，违者将依法追究法律责任。
+    <br>
+      违法和不良信息举报电话：400-123-4567 举报邮箱：jubao@example.com
+    <br>
+    &copy;Copyright 2025 - 2026 饮食之道 All Rights Reserved.
+    <br>粤ICP备2025410119号-1
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTopBtn">
+        <img src="images/胡萝卜-Carrot.png" alt="返回顶部">
+    </button>
+
+    <script>
+        // 返回顶部功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 汉堡菜单功能
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

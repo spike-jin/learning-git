@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中年人户外活动建议</title>
+    
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            background-color: #2c3e50;
+            box-shadow: 0 2px 10px rgba(190, 189, 189, 0.1);
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fffefe;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            padding-right: 7%;
+        }
+        
+        .contact {
+            margin-right: 20px;
+            font-size: 14px;
+        }
+        
+        .contact a {
+            text-decoration: none;
+            color: #fdfcfc;
+            margin: 0 10px;
+        }
+        
+        .contact a:hover {
+            color: #ff6a00;
+        }
+        
+        .button-group {
+            display: flex;
+        }
+        
+        .login-btn {
+            margin-right: 15px;
+            padding: 8px 20px;
+            background-color: transparent;
+            border: 1px solid #ff6a00;
+            color: #ff6a00;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .login-btn:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
+        
+        .register-btn {
+            padding: 8px 20px;
+            background-color: #ff6a00;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .register-btn:hover {
+            background-color: #e65c00;
+        }
+        
+        .main-nav {
+            background-color: #f8f8f8;
+            padding: 0px 50px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-icon {
+            width: 70px;
+            height: 70px;
+            padding-left: 11%;
+        }
+        .nav-icon img {
+            width: 80px;
+            height: 80px;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding-right: 7%;
+            
+        }
+        .menu-toggle{display:none}
+        .nav-menu li {
+            margin: 0 30px;
+        }
+        
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        .nav-menu a:hover, 
+        .nav-menu a.active {
+            color: #ff6a00;
+        }
+        
+        .nav-menu a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6a00;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        @media (max-width: 1200px) {
+            .nav-menu li {
+            margin: 0 20px;
+        }
+        }
+        @media (max-width: 1020px) {
+            .nav-menu li {
+            margin: 0 10px;
+        }
+        }       
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 870px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .nav-icon{display:none}
+            .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 30px;
+        }
+            .nav-menu {
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 20px 0;
+                background-color: #f8f8f8;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                margin: 0 15px;
+            }
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .main-content h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .main-content h3 {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .main-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .main-content li {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        /* 鼠标悬停在列表项上的效果 */
+        .main-content li:hover {
+            color: #ff6a00;
+            transition: color 0.3s ease;
+        }
+
+        /* 设置链接点击前和点击后的颜色 */
+        .main-content a:link {
+            color: #6C757D;/* 点击前颜色 */
+        }
+
+        .main-content a:visited {
+            color: #434a50; /* 点击后颜色 */
+        }
+
+
+        /* 底部 footer */
+        .footer { 
+            background-color: #f4f4f4; 
+            padding: 10px; 
+            text-align: center; 
+        } 
+
+        .footer a { 
+            color: #333; 
+            text-decoration: none; 
+            margin: 0 15px; 
+        } 
+
+        .footer-links {
+            background-color: #f4f4f4; 
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 5px 0;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .footer-links a {
+            color: #333; 
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .footer-links a:hover {
+            color: rgb(22, 22, 22);
+        }
+        
+        .footer-links a:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+            color: #666;
+        }
+        
+        /* 版权声明区域样式 */ 
+        .copyright { 
+            background-color: #f4f4f4; 
+            padding: 8px 15px; 
+            text-align: center; 
+            font-size: 12px; 
+            color: #666; 
+        } 
+
+         /* 返回顶部按钮 */
+         #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        #backToTopBtn.show {
+            opacity: 1;
+        }
+
+        #backToTopBtn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 0 50px 0 20px;
+            }
+             .logo {
+            padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                margin-left: 45px;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            .services {
+                display: none;
+            }
+
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+                padding-right: 50px;
+            }
+            .hamburger {
+                padding: 0;
+    
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .contact a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            
+            .nav-icon {
+                padding-left: 5%;
+            }
+            
+            .nav-menu {
+                padding: 10px 0;
+            }
+            .logo-text {
+            font-size: 19px;
+            }
+        }
+         @media (max-width: 390px) {
+            .logo-text {
+            font-size: 16px;
+
+        }
+        }
+    </style>
+</head>
+<body>
+    <!--头部-->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+
+                <span class="logo-text">饮食之道</span>
+            </a>
+        </div>
+       <div class="header-right">
+            <div class="button-group">
+                <a href="login-register.html?action=signin" class="login-btn">登录</a>
+                <a href="login-register.html?action=register" class="register-btn">注册</a>
+            </div>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+             
+        
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-icon">
+                <img src="images/logo.png" alt="饮食之道">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="dietary.html">食疗养生</a></li>
+                <li><a href="drink.html">养生茶饮</a></li>
+                <li><a href="newest.html" class="active">养生社区</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <div class="main-content">
+        <h1>中年人户外活动建议</h1>
+        <p><a href="winkly.html">点击此处查看更多中年人相关信息</a></p>
+        <p>中年人进行适当的户外活动有助于保持身体健康、放松心情。
+           以下是一些适合中年人的户外活动建议：</p>
+
+        <h2>散步</h2>
+        <p>散步是一种低强度、容易坚持的户外活动，适合大多数中年人。以下是散步的建议：</p>
+        <ul>
+            <li><strong>时间选择</strong>：早晨或傍晚时分，气温适宜，空气清新。</li>
+            <li><strong>地点选择</strong>：公园、河边、郊外等环境优美、空气流通的地方。</li>
+            <li><strong>频率和时长</strong>：每周至少进行 5 次，每次 30 分钟以上。</li>
+            <li><strong>注意事项</strong>：穿着舒适的鞋子，保持正确的姿势，避免过度疲劳。</li>
+        </ul>
+
+        <h2>慢跑</h2>
+        <p>慢跑可以增强心肺功能、提高身体代谢能力。如果身体条件允许，中年人可以尝试慢跑：</p>
+        <ul>
+            <li><strong>准备工作</strong>：进行全面的身体检查，确保身体适合慢跑。选择合适的运动装备，如跑鞋、运动服装等。</li>
+            <li><strong>运动强度</strong>：从低强度开始，逐渐增加跑步的时间和速度。可以采用慢跑与步行相结合的方式。</li>
+            <li><strong>频率</strong>：每周 3 - 4 次，每次 20 - 30 分钟。</li>
+            <li><strong>注意事项</strong>：运动前进行充分的热身活动，运动后进行拉伸放松。如果出现身体不适，应立即停止运动。</li>
+        </ul>
+
+        <h2>登山</h2>
+        <p>登山可以锻炼腿部肌肉、增强体力和耐力，同时欣赏大自然的美景。登山时需要注意以下几点：</p>
+        <ul>
+            <li><strong>路线选择</strong>：根据自己的身体状况和登山经验选择合适的路线。避免选择过于陡峭、危险的路线。</li>
+            <li><strong>装备准备</strong>：穿着合适的登山鞋、背包，携带必要的装备，如水壶、食物、地图、急救药品等。</li>
+            <li><strong>团队协作</strong>：最好与家人、朋友或登山爱好者一起登山，互相照顾和支持。</li>
+            <li><strong>安全注意事项</strong>：遵守登山规则，注意天气变化，避免在恶劣天气下登山。</li>
+        </ul>
+
+        <h2>骑自行车</h2>
+        <p>骑自行车是一种有趣的户外活动，可以锻炼全身肌肉，同时欣赏沿途的风景。以下是骑自行车的建议：</p>
+        <ul>
+            <li><strong>自行车选择</strong>：根据自己的需求和身体状况选择合适的自行车，如山地车、公路车等。</li>
+            <li><strong>骑行路线</strong>：选择平坦、安全的骑行路线，如自行车道、郊外道路等。</li>
+            <li><strong>骑行频率和时长</strong>：每周 3 - 4 次，每次 30 分钟以上。</li>
+            <li><strong>安全措施</strong>：佩戴头盔、手套等安全装备，遵守交通规则，注意交通安全。</li>
+        </ul>
+
+        <h2>户外活动注意事项</h2>
+        <ul>
+            <li><strong>身体评估</strong>：在进行户外活动前，进行全面的身体检查，了解自己的身体状况，确保身体适合进行相应的活动。</li>
+            <li><strong>合理安排</strong>：根据自己的身体状况和时间安排，合理选择户外活动的类型、频率和时长。避免过度疲劳。</li>
+            <li><strong>天气关注</strong>：关注天气预报，选择合适的天气进行户外活动。避免在恶劣天气下进行户外活动。</li>
+            <li><strong>补充水分和营养</strong>：在户外活动过程中，及时补充水分和营养，保持身体的水分平衡和能量供应。</li>
+            <li><strong>应急准备</strong>：随身携带必要的急救药品和通讯设备，以便在出现紧急情况时能够及时求助。</li>
+        </ul>
+
+    </div>
+
+
+     <!-- 底部 footer -->
+     <div class="footer"> 
+        <a href="gywm.html">关于我们</a> 
+        <a href="lxwm.html">联系我们</a> 
+        <a href="privacy.html">隐私政策</a> 
+        <a href="terms.html">使用条款</a> 
+        <a href="ditu.html">网站地图</a> 
+        <a href="liuyan.html">留言</a>
+    </div> 
+     <!-- 友情链接 -->
+    <div class="footer-links">
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+    </div>
+    <!-- 版权声明 -->
+    <div class="copyright">
+      本网站所有信息未经授权禁止转载、摘编、复制及建立镜像，违者将依法追究法律责任。
+    <br>
+      违法和不良信息举报电话：400-123-4567 举报邮箱：jubao@example.com
+    <br>
+    &copy;Copyright 2025 - 2026 饮食之道 All Rights Reserved.
+    <br>粤ICP备2025410119号-1
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTopBtn">
+        <img src="images/胡萝卜-Carrot.png" alt="返回顶部">
+    </button>
+    <script>
+        // 返回顶部功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+  
+        // 汉堡菜单功能
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            const mainMenu = document.querySelector('.nav-menu');
+            if (mainMenu.style.display === 'flex') {
+                mainMenu.style.display = 'none';
+            } else {
+                mainMenu.style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>

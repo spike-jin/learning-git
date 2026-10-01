@@ -1,0 +1,88 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .policy-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .policy-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ff6a00;
+        }
+        
+        p {
+            margin-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 16px;
+            margin: 15px 0 10px;
+        }
+        
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .back-to-top {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .back-to-top a {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #ff6a00;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-to-top a:hover {
+            background-color: #e65c00;
+        }

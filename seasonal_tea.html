@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节气茶饮_健康时令茶饮</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .tabs {
+            display: flex;
+            background-color: #4a5464;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px 0;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .tab.active {
+            background-color: #1e73be;
+            font-weight: bold;
+        }
+        
+        .content {
+            background-color: #f0f0f0;
+            padding: 20px;
+            min-height: 500px;
+        }
+        
+        h1 {
+            color: #1e73be;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    .summer-tea-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding:0 20px;
+
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .tea-item {
+        margin-bottom: 40px;
+        margin-left: 10%;
+        margin-right: 10%;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .tea-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #e8420a;
+        margin-left: 40px;
+    }
+
+    .tea-content {
+        display: flex;
+        gap: 20px;
+    }
+
+    .tea-image-container {
+        display: flex;
+        align-items: center; /* 垂直居中 */
+        width: 300px;
+    }
+
+    .tea-image {
+        max-width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .tea-description {
+        flex: 1;
+    }
+
+    .tea-description h3 {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .tea-description ul, .tea-description ol {
+        padding-left: 20px;
+    }
+
+    .tea-description p {
+        line-height: 1.6;
+        color: #666;
+    }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            width: 86%;
+        }
+      
+        .header-container a {
+            text-emphasis: none;
+            text-decoration: none;
+            color: #333;   
+        }
+        .header-container a h3 {
+            background-color: #333;
+            color: #333;
+            transition: color 0.3s;    
+        }
+
+        .header-container a:hover {
+            color: #333;
+        }
+
+        .header-container a h3 {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .header-container .STYLE20 {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        .header-container .STYLE20 {
+            margin-left: auto;
+        }
+                @media (max-width: 768px) {
+
+            .tea-content {
+                flex-direction: column;
+            }
+             .tea-image-container {
+                width: 100%;
+                justify-content: center;
+            }
+            .tea-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="infant">春季</div>
+            <div class="tab" data-tab="teen">夏季</div>
+            <div class="tab" data-tab="middle-aged">秋季</div>
+            <div class="tab" data-tab="elderly">冬季</div>
+        </div>
+        
+        <div class="content">
+            <!-- 春季节气茶饮页面内容 -->
+     <div id="infant" class="tab-content active">       
+     <div class="spring-tea-container">
+        <h1 class="section-title">春季节气茶饮</h1>
+        <div class="header-container">
+            <span class="STYLE20">您的位置>
+                <a href="index.html">首页</a>>
+                <a href="drink.html">养生茶饮</a>>春季节气茶饮
+            </span>
+        </div>
+        <!-- 立春茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">立春 - 桂圆红枣茶</h2>
+            <div class="tea-content">
+                <div class="tea-image-container">
+                    <img src="./images/drink/spring1.jpg" alt="桂圆红枣茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>立春时节，阳气渐升，桂圆红枣茶可补血养颜、健脾暖胃。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>桂圆干 5 颗</li>
+                        <li>红枣 3 颗</li>
+                        <li>冰糖适量</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将桂圆干、红枣洗净，红枣去核。</li>
+                        <li>把桂圆干、红枣放入锅中，加入适量清水，大火煮开后转小火煮 15 - 20 分钟。</li>
+                        <li>加入冰糖，搅拌至融化即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 雨水茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">雨水 - 陈皮普洱茶</h2>
+            <div class="tea-content">
+                <div class="tea-image-container">
+                    <img src="./images/drink/spring2.jpg" alt="陈皮普洱茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>雨水时节，湿气渐重，陈皮普洱茶可理气健脾、祛湿化痰。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>陈皮 5 克</li>
+                        <li>普洱茶 3 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将陈皮和普洱茶放入茶壶中。</li>
+                        <li>用沸水冲泡，第一泡倒掉，然后再次用沸水冲泡，焖泡 3 - 5 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 惊蛰茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">惊蛰 - 金银花茶</h2>
+            <div class="tea-content">
+                <div class="tea-image-container">
+                    <img src="./images/drink/spring3.jpg" alt="金银花茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>惊蛰时节，万物复苏，细菌滋生，金银花茶可清热解毒、疏散风热。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>金银花 10 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将金银花放入杯中。</li>
+                        <li>用开水冲泡，焖泡 5 - 10 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 春分茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">春分 - 薄荷绿茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/spring4.jpg" alt="薄荷绿茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>春分时节，气候多变，薄荷绿茶有疏散风热、清利头目之效。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>绿茶 5 克</li>
+                        <li>薄荷叶 3 - 5 片</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将绿茶和薄荷叶放入杯中。</li>
+                        <li>用 80℃ 左右的热水冲泡，焖泡 3 - 5 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 清明茶饮-->
+        <div class="tea-item">
+            <h2 class="tea-title">清明 - 菊花枸杞茶</h2>
+            <div class="tea-content">
+                <div class="tea-image-container">
+                    <img src="./images/drink/spring5.jpg" alt="菊花枸杞茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>清明前后，天气渐暖，菊花枸杞茶可清肝明目、滋补肝肾。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>菊花 5 朵</li>
+                        <li>枸杞 10 颗</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将菊花和枸杞放入杯中。</li>
+                        <li>用开水冲泡，焖泡 5 - 10 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 谷雨茶饮-->
+        <div class="tea-item">
+            <h2 class="tea-title">谷雨 - 玫瑰花茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/spring6.jpg" alt="玫瑰花茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>谷雨时节，气温升高，玫瑰花茶能理气解郁、活血散瘀。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>干玫瑰花 8 - 10 朵</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将干玫瑰花放入杯中。</li>
+                        <li>用开水冲泡，焖泡 3 - 5 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+    </div>
+     </div>
+
+            
+            <!-- 夏季内容 -->
+            <div id="teen" class="tab-content">
+                   <div class="summer-tea-container">
+        <h1 class="section-title">夏季节气茶饮</h1>
+    </div>
+        <div class="header-container">
+            <span class="STYLE20">您的位置&gt;
+                <a href="index.html">首页</a>&gt;
+                <a href="drink.html">养生茶饮</a>&gt;夏季节气茶饮
+            </span>
+        </div>
+        <!-- 立夏茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">立夏 - 荷叶茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/summer1.jpg" alt="荷叶茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>立夏之后，气温升高，荷叶茶有清热解暑、升发清阳之效。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>干荷叶 10 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将干荷叶撕成小片，放入杯中。</li>
+                        <li>用开水冲泡，焖泡 5 - 10 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 小满茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">小满 - 薏仁茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/summer2.jpg" alt="薏仁茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>小满时节，湿气渐重，薏仁茶能利水渗湿、健脾止泻。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>薏仁 20 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>薏仁洗净后，用清水浸泡 2 - 3 小时。</li>
+                        <li>将薏仁放入锅中，加适量水，大火煮开后转小火煮 30 - 40 分钟。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 芒种茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">芒种茶饮</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/summer3.jpg" alt="绿豆百合茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>芒种期间，天气炎热，绿豆百合茶可清热解毒、润肺止咳。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>绿豆 30 克</li>
+                        <li>百合 10 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>绿豆和百合洗净，用清水浸泡 1 小时。</li>
+                        <li>将绿豆和百合放入锅中，加适量水，大火煮开后转小火煮 40 - 50 分钟，至绿豆软烂。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 夏至茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">夏至 - 酸梅汤</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/summer4.jpg" alt="酸梅汤" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>夏至酷热，酸梅汤能开胃消食、生津止渴。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>乌梅 20 颗</li>
+                        <li>山楂 10 颗</li>
+                        <li>甘草 5 克</li>
+                        <li>冰糖适量</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>乌梅、山楂和甘草洗净，用清水浸泡 30 分钟。</li>
+                        <li>将浸泡好的材料放入锅中，加适量水，大火煮开后转小火煮 40 - 50 分钟。</li>
+                        <li>加入冰糖，搅拌至融化，放凉后即可饮用。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 小暑茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">小暑 - 薄荷柠檬茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/summer5.jpg" alt="薄荷柠檬茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>小暑时节，暑气正盛，薄荷柠檬茶可提神醒脑、清热解暑。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>薄荷叶 5 片</li>
+                        <li>柠檬 1 片</li>
+                        <li>绿茶 3 克</li>
+                        <li>蜂蜜适量</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将绿茶用 80℃ 热水冲泡，焖泡 3 - 5 分钟。</li>
+                        <li>加入薄荷叶和柠檬片，待水温稍凉后，加入蜂蜜搅拌均匀。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 大暑茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">大暑 - 金银花甘草茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/summer6.jpg" alt="金银花甘草茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>大暑是一年中最热的时候，金银花甘草茶能清热解毒、调和药性。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>金银花 10 克</li>
+                        <li>甘草 3 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将绿茶用 80℃ 热水冲泡，焖泡 3 - 5 分钟。</li>
+                        <li>加入薄荷叶和柠檬片，待水温稍凉后，加入蜂蜜搅拌均匀。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+            </div>
+            
+        <!-- 秋季节气茶饮页面内容 -->
+    <div id="middle-aged" class="tab-content">
+    <div class="autumn-tea-container">
+        <h1 class="section-title">秋季节气茶饮</h1>
+        <div class="header-container">
+            <span class="STYLE20">您的位置&gt;
+                <a href="index.html">首页</a>&gt;
+                <a href="drink.html">茶饮养生</a>&gt;四季专属
+            </span>
+        </div>
+        
+        <!-- 立秋茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">立秋 - 雪梨百合茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/autumn1.jpg" alt="雪梨百合茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>立秋后，气候渐燥，雪梨百合茶有润肺止咳、清热生津之效。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>雪梨 1 个</li>
+                        <li>百合 10 克</li>
+                        <li>冰糖适量</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>雪梨洗净去核，切成小块；百合洗净。</li>
+                        <li>将雪梨块、百合放入锅中，加适量水，大火煮开后转小火煮 20 - 30 分钟。</li>
+                        <li>加入冰糖，搅拌至融化即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 处暑茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">处暑 - 桂花乌龙茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/autumn2.jpg" alt="桂花乌龙茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>处暑时暑气渐消，桂花乌龙茶可滋阴润肺、舒缓身心。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>乌龙茶 5 克</li>
+                        <li>干桂花 3 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将乌龙茶和干桂花放入杯中。</li>
+                        <li>用 90℃ 左右的热水冲泡，焖泡 3 - 5 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 白露茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">白露 - 红枣桂圆姜茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/autumn3.jpg" alt="红枣桂圆姜茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>白露后昼夜温差大，红枣桂圆姜茶能暖身驱寒、补气养血。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>红枣 5 颗</li>
+                        <li>桂圆 5 颗</li>
+                        <li>生姜 3 片</li>
+                        <li>红糖适量</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>红枣去核，桂圆去壳，生姜切片。</li>
+                        <li>将红枣、桂圆、生姜放入锅中，加适量水，大火煮开后转小火煮 15 - 20 分钟。</li>
+                        <li>加入红糖，搅拌至融化即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 秋分茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">秋分 - 菊花普洱茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/autumn4.jpg" alt="薄荷绿茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>秋分时节，天气干燥，菊花普洱茶可清热明目、消食解腻。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>菊花 5 朵</li>
+                        <li>普洱茶 3 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将菊花和普洱茶放入杯中。</li>
+                        <li>用开水冲泡，焖泡 5 - 10 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 寒露茶饮-->
+        <div class="tea-item">
+            <h2 class="tea-title">寒露 - 枸杞红枣茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/autumn5.jpg" alt="枸杞红枣茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>寒露后天气渐冷，枸杞红枣茶能滋补肝肾、养血安神。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>枸杞 10 颗</li>
+                        <li>红枣 5 颗</li>
+                        <li>冰糖适量</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>红枣去核，与枸杞一起放入锅中。</li>
+                        <li>加适量水，大火煮开后转小火煮 15 - 20 分钟。</li>
+                        <li>加入冰糖，搅拌至融化即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 霜降茶饮-->
+        <div class="tea-item">
+            <h2 class="tea-title">霜降 - 陈皮山楂茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/autumn6.jpg" alt="陈皮山楂茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>霜降时，人体易积食，陈皮山楂茶可理气健脾、消食化积。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>陈皮 5 克</li>
+                        <li>山楂 10 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将陈皮和山楂放入杯中。</li>
+                        <li>用开水冲泡，焖泡 10 - 15 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+    </div>
+            </div>
+            
+            <!-- 冬季 -->
+            <div id="elderly" class="tab-content">
+            <div class="winter-tea-container">
+        <h1 class="section-title">冬季节气茶饮</h1>
+    </div>
+    <div class="header-container">
+        <span class="STYLE20">您的位置&gt;
+            <a href="index.html">首页</a>&gt;
+            <a href="drink.html">养生茶饮</a>&gt;冬季节气茶饮
+        </span>
+    </div>
+        <!-- 立冬茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">立冬 - 桂圆红枣姜茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/winter1.jpg" alt="桂圆红枣姜茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>立冬后天气渐冷，桂圆红枣姜茶可暖身驱寒、补气养血。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>桂圆 5 颗</li>
+                        <li>红枣 5 颗</li>
+                        <li>生姜 3 片</li>
+                        <li>红糖适量</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>红枣去核，桂圆去壳，生姜切片。</li>
+                        <li>将桂圆、红枣、生姜放入锅中，加适量水，大火煮开后转小火煮 15 - 20 分钟。</li>
+                        <li>加入红糖，搅拌至融化即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 小雪茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">小雪 - 熟普洱茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/winter2.jpg" alt="熟普洱茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>小雪时节，天气寒冷，熟普洱茶能暖胃驱寒、帮助消化。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>熟普洱茶 5 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将熟普洱茶放入茶壶或杯中。</li>
+                        <li>用沸水冲泡，第一泡可快速冲洗茶叶后倒掉，然后再次用沸水冲泡，焖泡 3 - 5 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 大雪茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">大雪 - 核桃芝麻茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/winter3.jpg" alt="核桃芝麻茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>大雪期间，人体需滋补，核桃芝麻茶能补肾益精、润肠通便。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>核桃仁 10 克</li>
+                        <li>黑芝麻 10 克</li>
+                        <li>冰糖适量</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将核桃仁和黑芝麻研磨成粉末。</li>
+                        <li>把粉末放入杯中，加入适量冰糖。</li>
+                        <li>用开水冲泡，搅拌均匀即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 冬至茶饮 -->
+        <div class="tea-item">
+            <h2 class="tea-title">冬至 - 肉桂红茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/winter4.jpg" alt="肉桂红茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>冬至是一年中最冷的时候，肉桂红茶可温补肾阳、散寒止痛。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>红茶 5 克</li>
+                    <li>肉桂 3 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将红茶和肉桂放入茶壶或杯中。</li>
+                        <li>用沸水冲泡，焖泡 5 - 10 分钟即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 小寒茶饮-->
+        <div class="tea-item">
+            <h2 class="tea-title">小寒 - 人参茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/winter5.jpg" alt="人参茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>小寒时节，人体阳气虚弱，人参茶能大补元气、复脉固脱。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>人参 3 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>将人参切成薄片，放入杯中。</li>
+                        <li>用开水冲泡，焖泡 10 - 15 分钟即可，可多次续水。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 大寒茶饮-->
+        <div class="tea-item">
+            <h2 class="tea-title">大寒 - 姜母茶</h2>
+            <div class="tea-content">
+                 <div class="tea-image-container">
+                    <img src="./images/drink/winter6.jpg" alt="姜母茶" class="tea-image">
+                </div>
+                <div class="tea-description">
+                    <p>大寒是一年中最寒冷的时段，姜母茶能暖身驱寒、促进血液循环。</p>
+                    <h3>材料：</h3>
+                    <ul>
+                        <li>老姜 20 克</li>
+                        <li>红糖 15 克</li>
+                    </ul>
+                    <h3>做法：</h3>
+                    <ol>
+                        <li>老姜洗净，切成丝。</li>
+                        <li>将姜丝放入锅中，加适量水，大火煮开后转小火煮 15 - 20 分钟。</li>
+                        <li>加入红糖，搅拌至融化即可。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+    <script>
+        // 季节茶饮
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+
+                    this.classList.add('active');
+                    
+
+                    const contents = document.querySelectorAll('.tab-content');
+                    contents.forEach(content => content.classList.remove('active'));
+                    
+
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

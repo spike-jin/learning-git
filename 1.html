@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康养生指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .tabs {
+            display: flex;
+            background-color: #4a5464;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px 0;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .tab.active {
+            background-color: #1e73be;
+            font-weight: bold;
+        }
+        
+        .content {
+            background-color: #f0f0f0;
+            padding: 20px;
+            min-height: 500px;
+        }
+        
+        .tea-content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .tea-content p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .tea-content h2 {
+            font-size: 24px;
+            margin: 20px 0 15px;
+        }
+        
+        .tea-content ul {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        .tea-content li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+            text-indent: 10px;
+            font-size: 16px;
+        }
+        
+        .tea-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /*=======================================中药养生茶==========================================================*/
+        .tea-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tea-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .tea-content {
+            line-height: 1.6;
+        }
+
+        .tea-item {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tea-item h2 {
+            margin-bottom: 10px;
+            text-align: center;
+            width: 100%;
+        }
+    
+        .tea-item .content-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .tea-item img {
+            max-width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            transform: translateY(20px);
+        }
+
+        .tea-item ul {
+            flex: 1;
+            margin-bottom: 0;
+            margin-left: 40px;
+        }
+
+        .tea-item ul .li1{
+            list-style-type: none;
+        }
+
+        .tea-item ul li {
+            list-style-type: disc;
+            font-size: 20px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+        }
+      
+        .header-container a {
+            text-emphasis: none;
+            text-decoration: none;
+            color: #333;   
+        }
+        .header-container a h3 {
+            background-color: #333;
+            color: #333;
+            transition: color 0.3s;    
+        }
+
+        .header-container a:hover {
+            color: #333;
+        }
+
+        .header-container a h3 {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .header-container .STYLE20 {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        .header-container .STYLE20 {
+            margin-left: auto;
+        }
+
+        @media (max-width: 992px) {
+            .tea-item .content-wrapper {
+                flex-direction: column;
+            }
+        
+            .tea-item img {
+                width: 100%;
+                height: auto;
+                max-width: 300px;
+                margin-bottom: 20px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        
+            .tea-item ul {
+                margin-left: 0;
+            }
+             .tea-item  li {
+                margin-left:20px ;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tea-item .content-wrapper {
+                flex-direction: column;
+            }
+        
+            .tea-item img {
+                width: 100%;
+                height: auto;
+                max-width: 250px;
+                margin-bottom: 20px;
+            }
+        
+            .tea-item ul {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 50px 0 20px;
+            }
+             .logo {
+            padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                margin-left: 45px;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            .services {
+                display: none;
+            }
+            .tea-item .content-wrapper {
+                flex-direction: column;
+            }
+        
+            .tea-item img {
+                width: 100%;
+                height: auto;
+                max-width: 250px;
+                margin-bottom: 20px;
+            }
+        
+            .tea-item ul {
+                margin-left: 0;
+            }
+        }
+
+        /*==========================================花草茶=======================================================*/
+        .herbal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .herbal-title {
+            background: linear-gradient(135deg, rgba(205, 133, 63, 0.7),rgba(245, 222, 179, 0.7));
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .herbal-title h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .herbal-title p {
+            font-size: 1.2em;
+        }
+
+        .herbal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .herbal-content img {
+            max-width: 100%;
+            height: 80%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .herbal-content h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .herbal-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .herbal-content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .herbal-content li {
+            margin-bottom: 5px;
+        }
+
+        .herbal-header-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+      
+        .herbal-header-container a {
+            text-emphasis: none;
+            text-decoration: none;
+            color: #333;   
+        }
+        .herbal-header-container a h3 {
+            background-color: #333;
+            color: #333;
+            transition: color 0.3s;    
+        }
+
+        .herbal-header-container a:hover {
+            color: #333;
+        }
+
+        .herbal-header-container a h3 {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .herbal-header-container .STYLE20 {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        .herbal-header-container .STYLE20 {
+            margin-left: auto;
+        }
+/*=====================水果茶=================================*/
+       .placeholder-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            margin: 15px 0;
+        }
+
+        .fruit-tea-health-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .fruit-tea-health-banner {
+            background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+            color: #333;
+            padding: 100px 0;
+            margin-top: -14px;
+            margin-bottom: 0px;
+        }
+
+        .fruit-tea-health-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .fruit-tea-health-banner p {
+            font-size: 1.2rem;
+        }
+
+        .fruit-tea-health-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 20px;
+            margin-bottom: 50px;
+        }
+
+        .fruit-tea-health-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .fruit-tea-health-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .fruit-tea-health-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .fruit-tea-health-card h2 {
+            padding: 20px 0 10px;
+            color: #333;
+        }
+
+        .fruit-tea-health-card p {
+            padding: 0 20px 20px;
+            color: #666;
+        }
+
+        .fruit-tea-health-card p:hover {
+            color: #070606;
+        }
+
+        .health-tips {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .health-tips h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .health-tips ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .health-tips li {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .order-btn:hover {
+            background: #45a049;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+      
+        .header-container a {
+            text-emphasis: none;
+            text-decoration: none;
+            color: #333;   
+        }
+        .header-container a h3 {
+            background-color: #333;
+            color: #333;
+            transition: color 0.3s;    
+        }
+
+        .header-container a:hover {
+            color: #333;
+        }
+
+        .header-container a h3 {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .header-container .STYLE20 {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        .header-container .STYLE20 {
+            margin-left: auto;
+        }
+
+.fruit-tea-health-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+.fruit-tea-health-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    overflow: hidden;
+    transition: transform 0.3s;
+    max-width: 300px;
+}
+
+@media (min-width: 1024px) {
+    .fruit-tea-health-card {
+        flex: 0 0 calc(25% - 30px);
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 993px) {
+    .fruit-tea-health-card {
+        flex: 0 0 calc(33.333% - 30px);
+    }
+}
+
+@media (max-width: 992px) and (min-width: 680px) {
+    .fruit-tea-health-card {
+        flex: 0 0 calc(50% - 30px);
+    }
+}
+
+@media (max-width: 679px) {
+    .fruit-tea-health-card {
+        flex: 0 0 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="tea-container">
+        <div class="tabs">
+            <div class="tab active" data-tab="infant">中药养生茶</div>
+            <div class="tab" data-tab="teen">花草茶</div>
+            <div class="tab" data-tab="middle-aged">水果茶</div>
+        </div>
+        
+        <div class="content">
+            <!-- 中药养生茶 -->
+            <div id="infant" class="tab-content active">
+                <h1 class="tea-title">中药养生茶</h1>
+                <div class="header-container">
+                    <span class="STYLE20">您的位置&gt;
+                        <a href="index.html">首页</a>&gt;
+                        <a href="drink.html">养生茶饮</a>&gt;中药养生茶
+                    </span>
+                </div>
+                <div class="content">
+                <div class="tea-item">
+                    <h2>白菊花茶</h2>
+                    <div class="content-wrapper">
+                        <img src="./images/drink/tc1.jpg" alt="白菊花茶">
+                        <ul>
+                            <li class="li1">功效:</li>
+                            <ul>
+                                <li>平肝潜阳：有助于缓解肝阳上亢引起的头痛、眩晕等症状。</li>
+                                <li>清肝明目：可清泻肝火，保护眼睛，改善眼睛红肿、干涩、视物模糊等情况。</li>
+                                <li>清热解毒：能帮助清除体内热毒，对于热毒引起的疮疡肿毒等有一定的缓解作用。</li>
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li class="li1">适用人群:</li>
+                            <ul>
+                                <li>肝火旺盛者：有烦躁易怒、目赤肿痛等表现的人群，饮用白菊花茶可清肝泻火</li>
+                                <li>长期用眼者：如经常面对电脑、手机的上班族和学生，能缓解眼睛疲劳、干涩，保护视力。</li>
+                                <li>高血压患者：对肝阳上亢型高血压患者，有一定的辅助降压作用，可缓解头晕、头痛等症状。</li>
+                            </ul>
+                        </ul>
+                    </div> 
+                </div>
+                <div class="tea-item">
+                    <h2>玫瑰花茶</h2>
+                    <div class="content-wrapper">
+                        <img src="./images/drink/tc2.jpg" alt="玫瑰花茶">
+                        <ul>
+                            <li class="li1">功效:</li>
+                            <ul>
+                                <li>疏肝解郁：有助于缓解情绪抑郁、焦虑，改善心情，让人心情舒畅。</li>
+                                <li>美容养颜:含有丰富的维生素C、花青素等抗氧化物质,可促进血液循环,减少色斑形成,使肌肤红润有光泽。</li>
+                                <li>调经止痛：对女性月经不调、痛经等有一定的缓解作用，能调节内分泌，减轻经期不适。</li>
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li class="li1">适用人群:</li>
+                            <ul>
+                                <li>情绪调节：适合压力大、情绪易波动、焦虑抑郁人群，可舒缓情绪。</li>
+                                <li>女性健康：对月经不调、痛经女性有益，还能美容养颜。</li>
+                                <li> 心血管养护：含抗氧化成分，利于降血脂、防动脉硬化，适合关注心血管健康者。</li> 
+                            </ul>
+                        </ul>
+                    </div>  
+                </div>
+                <div class="tea-item">
+                    <h2>菟丝子茶</h2>
+                    <div class="content-wrapper">
+                        <img src="./images/drink/tc3.jpg" alt="菟丝子茶">
+                        <ul>
+                            <li class="li1">功效:</li>
+                            <ul>
+                                <li>补肾益精：可滋补肾脏，改善腰膝酸软、阳痿早泄等肾虚症状，调养男女生殖系统。</li>
+                                <li>养肝明目：滋养肝脏，缓解肝肾不足导致的视物模糊等眼部不适。</li>
+                                <li>安胎：孕妇胎动不安时，适量饮用可辅助安胎。</li>
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li class="li1">适用人群:</li>
+                            <ul>
+                                <li>肾虚者：适用于肾阴虚或肾阳虚，有腰膝酸痛、性功能减退症状者。</li>
+                                <li>特殊孕妇：胎动不安的孕妇在医生指导下饮用，有辅助安胎作用。</li>
+                                <li>脾虚泄泻者：对脾胃虚弱、腹泻人群有健脾止泻功效。</li> 
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tea-item">
+                    <h2>三七花茶</h2>
+                    <div class="content-wrapper">
+                        <img src="./images/drink/tc4.jpg" alt="三七花茶">
+                        <ul>
+                            <li class="li1">功效:</li>
+                            <ul>
+                                <li>活血化瘀：可促进血液循环，消散瘀血，辅助治疗跌打损伤，预防血栓。</li>
+                                <li>降血压血脂：能扩张血管、调节血脂，利于高血压、高血脂患者维持心血管健康。</li>
+                                <li> 清热解毒：缓解目赤肿痛、咽喉肿痛等上火症状。</li>
+                                <li>镇静安神：调节神经系统，改善焦虑、失眠</li>
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li class="li1">适用人群:</li>
+                            <ul>
+                                <li>心血管疾病患者：高血压、高血脂患者适量饮用，辅助控病情、护心血管。</li>
+                                <li>易上火人群：可缓解牙龈肿痛、口腔溃疡等上火症状。</li>
+                                <li>压力大失眠人群：助于缓解焦虑，改善睡眠</li> 
+                                <li>血瘀体质人群：改善面色晦暗、皮肤瘀斑等血瘀症状。</li>
+                            </ul>
+                        </ul>
+                    </div>  
+                </div>
+                <div class="tea-item">
+                    <h2>桑葚茶</h2>
+                    <div class="content-wrapper">
+                        <img src="./images/drink/tc5.jpg" alt="桑葚茶">
+                        <ul>
+                            <li class="li1">功效:</li>
+                            <ul>
+                                <li>贫血人群：适合缺铁性贫血者，补充营养改善贫血。</li>
+                                <li>便秘人群：促进肠道蠕动，缓解便秘，呵护肠道健康。</li>
+                                <li>免疫力低下者：适合体弱易感冒人群，增强机体免疫力。</li>
+                                <li>抗衰爱美者：助力追求年轻者内调养颜，延缓衰老。</li>
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li class="li1">适用人群:</li>
+                            <ul>
+                                <li>贫血人群：适合缺铁性贫血，补充营养改善病症。</li>
+                                <li>便秘人群：促进肠道蠕动，缓解便秘护肠道。</li>
+                                <li>免疫力低下者：适合体弱易感冒人群，增强免疫。</li> 
+                                <li>抗衰爱美者：助力内调养颜，实现抗衰。</li>
+                            </ul>
+                        </ul>
+                    </div>  
+                </div>
+                <div class="tea-item">
+                    <h2>麦冬茶</h2>
+                    <div class="content-wrapper">
+                        <img src="./images/drink/tc6.jpg" alt="麦冬茶">
+                        <ul>
+                            <li class="li1">功效:</li>
+                            <ul>
+                                <li>润肺止咳：麦冬归肺经，滋阴润肺，缓解肺燥干咳、咽喉干痛。</li>
+                                <li>益胃生津：滋养胃阴，改善口干、胃痛、便干等胃阴不足症状。</li>
+                                <li>清心除烦：清降心火，减轻心烦失眠、心悸。</li>
+                                <li>润肠通便：黏液质促进肠道蠕动，改善肠燥便秘 。</li>
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li class="li1">适用人群:</li>
+                            <ul>
+                                <li>肺燥咳嗽者：缓解干咳少痰、咽干等肺部不适。</li>
+                                <li>胃阴不足者：改善口干、食欲不振、胃脘嘈杂等症状。</li>
+                                <li>心烦失眠者：调理心火旺盛引起的心烦失眠。</li>
+                                <li>便秘人群：润肠通便，改善肠燥便秘。</li> 
+                            </ul>
+                        </ul>
+                    </div>  
+                </div>
+                <div class="tea-item">
+                    <h2>夏枯草茶</h2>
+                    <div class="content-wrapper">
+                        <img src="./images/drink/tc7.jpg" alt="夏枯草茶">
+                        <ul>
+                            <li class="li1">功效:</li>
+                            <ul>
+                                <li>清肝泻火：能清泻肝火，缓解肝火上炎所致的目赤肿痛、头痛眩晕等症状。</li>
+                                <li>散结消肿：可消散郁结，对瘰疬、瘿瘤等有一定的调理作用。</li>
+                                <li>清热解毒：有清热解毒之效，有助于清除体内热毒，改善咽喉肿痛等症状。</li>
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li class="li1">适用人群:</li>
+                            <ul>
+                                <li>肝火旺盛者：适合有目赤肿痛、急躁易怒、头痛等肝火旺盛表现的人群。</li>
+                                <li>甲状腺结节患者：其散结消肿的功效，对甲状腺结节、颈部淋巴结肿大等有一定辅助调理作用。</li>
+                                <li>咽喉肿痛者：可帮助缓解热毒蕴结所致的咽喉肿痛、声音嘶哑等症状。</li> 
+                            </ul>
+                        </ul>
+                    </div>  
+                </div>
+                <div class="tea-item">
+                    <h2>灵芝茶</h2>
+                    <div class="content-wrapper">
+                        <img src="./images/drink/tc8.jpg" alt="灵芝茶">
+                        <ul>
+                            <li class="li1">功效:</li>
+                            <ul>
+                                <li>增强免疫力：灵芝多糖激活免疫细胞，提升抗病力。</li>
+                                <li>安神助眠：调节神经，改善失眠多梦与健忘。</li>
+                                <li>保护心血管：降血脂、改善血黏度，护心防冠心病、高血压。</li>
+                                <li>抗氧化：清除自由基，延缓衰老、养颜 。</li>
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li class="li1">适用人群:</li>
+                            <ul>
+                                <li>免疫力低下者：易感冒生病人群，饮用可提升免疫力。</li>
+                                <li>睡眠障碍者：改善失眠、多梦、易醒等睡眠问题。</li>
+                                <li>心血管疾病患者：辅助调理高血压、高血脂、冠心病等病症。</li>
+                                <li>中老年人：助力延缓衰老，预防慢性疾病。</li> 
+                            </ul>
+                        </ul>
+                    </div>  
+                </div>
+            </div>
+            </div>
+            
+            <!-- 花草茶 -->
+            <div id="teen" class="tab-content">
+                <div class="herbal-title">
+                    <h1>花草茶 - 自然之味</h1>
+                    <p>探索花草茶的美妙世界</p>
+                </div>
+                <div class="herbal-header-container">
+                    <span class="STYLE20">您的位置&gt;
+                        <a href="index.html">首页</a>&gt;
+                        <a href="drink.html">茶饮养生</a>&gt;花草茶
+                    </span>
+                </div>
+                <div class="herbal-content">
+                    <img src="./images/drink/htea.jpg" alt="花草茶">
+                    <h2>什么是花草茶？</h2>
+                    <p>花草茶(Herbal Tea)，又称草本茶或药草茶，是以植物的花、叶、根、茎、果实或种子等部分为原料，经过干燥后单独或混合冲泡而成的饮品。与传统茶叶(如绿茶、红茶等,源自茶树Camellia sinensis)不同，花草茶通常不含咖啡因，具有天然香气和多样化的保健功效。</p>
+
+                    <h2>花草茶的种类</h2>
+                    <h4>花类花草茶:</h4>
+                    <ul> 
+                        <li><strong>菊花茶：</strong>清热明目，降火（分杭白菊、胎菊、野菊等。</li>
+                        <li><strong>玫瑰花茶：</strong>舒缓情绪，改善睡眠。</li>
+                        <li><strong>金银花茶：</strong>清热解毒，缓解咽喉肿痛。</li>
+                        <li><strong>薰衣草茶：</strong>舒缓压力，助眠安神。</li>
+                        <li><strong>桂花茶：</strong>暖胃散寒，润肺止咳。</li>
+                        <li><strong>洛神花：</strong>富含维C,酸甜口感，降脂降压。</li>
+                    </ul>
+
+                    <h4>叶茎类花草茶:</h4>
+                    <ul> 
+                        <li><strong>薄荷茶：</strong>清凉提神，缓解腹胀、头痛。</li>
+                        <li><strong>柠檬草茶：</strong>促进消化，抗菌消炎。</li>
+                        <li><strong>甜叶菊茶：</strong>天然甜味剂，适合控糖人群。</li>
+                        <li><strong>马鞭草茶：</strong>利尿消肿，缓解腿部疲劳。</li>
+                    </ul>
+
+                    <h4>果实种子类花草茶:</h4>
+                    <ul> 
+                        <li><strong>枸杞茶：</strong>补肝肾，明目抗衰老。</li>
+                        <li><strong>决明子茶：</strong>清肝明目，润肠通便。</li>
+                        <li><strong>山楂茶：</strong>消食化积，降脂健胃。</li>
+                        <li><strong>无花果茶：</strong>润肺通便，富含膳食纤维。</li>
+                    </ul>
+                </div>
+            </div>
+            
+                <!-- 水果茶养生页面内容 -->
+                 <div id="middle-aged" class="tab-content">
+                    <section class="fruit-tea-health-section">
+        <!-- 养生水果茶总览横幅 -->
+        <div class="fruit-tea-health-banner">
+            <h1>水果茶养生，开启健康生活</h1>
+            <p>将新鲜水果与茶叶巧妙搭配，不仅口感独特，更蕴含丰富养生功效。</p>
+        </div>
+        <div class="header-container">
+            <span class="STYLE20">您的位置&gt;
+                <a href="index.html">首页</a>&gt;
+                <a href="drink.html">养生茶饮</a>&gt;水果茶
+            </span>
+        </div>
+        <div class="fruit-tea-health-container">
+            <!-- 草莓水果茶养生卡片 -->
+            <div class="fruit-tea-health-card">
+                <img src="./images/drink/ftea1.jpg" alt="草莓水果茶">
+                <h2>草莓水果茶</h2>
+                <p>草莓富含维生素C和抗氧化剂，与绿茶搭配，能增强免疫力、促进消化，让您活力满满。</p>
+            </div>
+
+            <!-- 橙子水果茶养生卡片 -->
+            <div class="fruit-tea-health-card">
+                <img src="./images/drink/ftea2.jpg" alt="橙子水果茶">
+                <h2>橙子水果茶</h2>
+                <p>橙子含有丰富的维生素和类黄酮，融入红茶后，可帮助预防感冒、舒缓压力，身心愉悦。</p>
+            </div>
+
+            <!-- 柠檬水果茶养生卡片 -->
+            <div class="fruit-tea-health-card">
+                <img src="./images/drink/ftea3.jpg" alt="柠檬水果茶">
+                <h2>柠檬水果茶</h2>
+                <p>柠檬富含维生素C和柠檬酸，与红茶搭配，可美白肌肤、提神醒脑，活力无限。</p>
+            </div>
+            
+            <!-- 蓝莓水果茶养生卡片 -->
+            <div class="fruit-tea-health-card">
+                <img src="./images/drink/ftea4.jpg" alt="蓝莓水果茶">
+                <h2>蓝莓水果茶</h2>
+                <p>蓝莓含有丰富的花青素和抗氧化物质，配上绿茶，能增强记忆力、保护眼睛，智慧加倍。</p>
+            </div>
+            
+            <!-- 西瓜水果茶养生卡片 -->
+            <div class="fruit-tea-health-card">
+                <img src="./images/drink/ftea5.jpg" alt="西瓜水果茶">
+                <h2>西瓜水果茶</h2>
+                <p>西瓜水分充足且富含多种维生素，搭配薄荷茶，可清热解暑、利尿消肿，身心舒畅。</p>
+            </div>
+            
+            <!-- 柚子水果茶养生卡片 -->
+            <div class="fruit-tea-health-card">
+                <img src="./images/drink/ftea6.jpg" alt="柚子水果茶">
+                <h2>柚子水果茶</h2>
+                <p>柚子含有柚皮苷和多种维生素，搭配绿茶，能理气化痰、润肺清肠，改善呼吸。</p>
+            </div>
+            
+            <!-- 葡萄水果茶养生卡片 -->
+            <div class="fruit-tea-health-card">
+                <img src="./images/drink/ftea7.jpg" alt="葡萄水果茶">
+                <h2>葡萄水果茶</h2>
+                <p>葡萄含有类黄酮和白藜芦醇，与黑茶搭配，能抗氧化、预防心血管疾病，守护健康。</p>
+            </div>
+
+            <!-- 樱桃水果茶养生卡片 -->
+            <div class="fruit-tea-health-card">
+                <img src="./images/drink/ftea8.jpg" alt="樱桃水果茶">
+                <h2>樱桃水果茶</h2>
+                <p>樱桃富含铁元素和生物活性成分，搭配水果茶，可补血养颜、抗炎止痛，美丽常驻。</p>
+            </div>
+        </div>
+
+        <!-- 养生小贴士 -->
+        <div class="health-tips">
+            <h3>养生小贴士</h3>
+            <ul>
+                <li>水果茶建议现泡现喝，以保留最佳营养成分。</li>
+                <li>根据个人体质选择合适的水果和茶叶搭配。</li>
+                <li>睡前不宜饮用过多水果茶，以免影响睡眠。</li>
+            </ul>
+        </div>
+    </section>
+                 </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有标签的active类
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // 为当前点击的标签添加active类
+                    this.classList.add('active');
+                    
+                    // 隐藏所有内容
+                    const contents = document.querySelectorAll('.tab-content');
+                    contents.forEach(content => content.classList.remove('active'));
+                    
+                    // 显示对应的内容
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

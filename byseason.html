@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按季节</title>
+    <style>
+       /* 全局样式 */
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            background-color: #2c3e50;
+            box-shadow: 0 2px 10px rgba(190, 189, 189, 0.1);
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fffefe;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            padding-right: 7%;
+        }
+        
+        .contact {
+            margin-right: 30px;
+            font-size: 14px;
+        }
+        
+        .contact a {
+            text-decoration: none;
+            color: #fdfcfc;
+            margin: 0 10px;
+        }
+        
+        .contact a:hover {
+            color: #ff6a00;
+        }
+        
+        .button-group {
+            display: flex;
+        }
+        
+        .login-btn {
+            margin-right: 15px;
+            padding: 8px 20px;
+            background-color: transparent;
+            border: 1px solid #ff6a00;
+            color: #ff6a00;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .login-btn:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
+        
+        .register-btn {
+            padding: 8px 20px;
+            background-color: #ff6a00;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .register-btn:hover {
+            background-color: #e65c00;
+        }
+        
+        .main-nav {
+            background-color: #f8f8f8;
+            padding: 0px 50px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-icon {
+            width: 70px;
+            height: 70px;
+            padding-left: 10.5%;
+        }
+        .nav-icon img {
+            width: 80px;
+            height: 80px;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding-right: 7%;
+            
+        }
+        .menu-toggle{display:none}
+        .nav-menu li {
+            margin: 0 30px;
+        }
+        
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        .nav-menu a:hover, 
+        .nav-menu a.active {
+            color: #ff6a00;
+        }
+        
+        .nav-menu a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6a00;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        @media (max-width: 1200px) {
+            .nav-menu li {
+            margin: 0 20px;
+        }
+        }
+        @media (max-width: 1020px) {
+            .nav-menu li {
+            margin: 0 10px;
+        }
+        }       
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 870px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .nav-icon{display:none}
+            .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 30px;
+        }
+            .nav-menu {
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 20px 0;
+                background-color: #f8f8f8;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                margin: 0 15px;
+            }
+        }
+    
+        @media (max-width: 768px) {
+            header {
+                padding: 0 20px;
+            }
+             .logo {
+            padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            .services {
+                display: none;
+            }
+
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .header-right {
+                padding-right: 10px;
+            }
+            
+            .contact a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            
+            .nav-icon {
+                padding-left: 5%;
+            }
+            
+            .nav-menu {
+                padding: 10px 0;
+            }
+
+        }
+        .placeholder-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            margin: 15px 0;
+        }
+
+        .herbal-milk-tea-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .season-banner {
+            background: linear-gradient(135deg, rgba(255, 205, 148, 0.7), rgba(128, 205, 239, 0.7));
+            color: #333;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .season-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .season-banner p {
+            font-size: 1.2rem;
+        }
+
+        .season-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px 20px;
+        }
+
+        .season-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .season-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .season-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .season-card h2 {
+            padding: 20px 0 10px;
+            text-align: center;
+            color: #333;
+        }
+
+        .season-card p {
+            padding: 0 20px 20px;
+            color: #666;
+        }
+
+        .season-card p:hover {
+            color: #090909;
+        }
+
+        .order-btn {
+            display: block;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .order-btn:hover {
+            background: #45a049;
+        }
+       .header-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+        }
+      
+        .header-container a {
+            text-emphasis: none;
+            text-decoration: none;
+            color: #333;   
+        }
+        .header-container a h3 {
+            background-color: #333;
+            color: #333;
+            transition: color 0.3s;    
+        }
+
+        .header-container a:hover {
+            color: #333;
+        }
+
+        .header-container a h3 {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .header-container .STYLE20 {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        .header-container .STYLE20 {
+            margin-left: auto;
+
+        }
+               /* 底部 footer */
+               .footer { 
+            background-color: #f4f4f4; 
+            padding: 10px; 
+            text-align: center; 
+        } 
+
+        .footer a { 
+            color: #333; 
+            text-decoration: none; 
+            margin: 0 15px; 
+        } 
+
+        .footer-links {
+            background-color: #f4f4f4; 
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 5px 0;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .footer-links a {
+            color: #333; 
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .footer-links a:hover {
+            color: rgb(22, 22, 22);
+        }
+        
+        .footer-links a:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+            color: #666;
+        }
+        
+        /* 版权声明区域样式 */ 
+        .copyright { 
+            background-color: #f4f4f4; 
+            padding: 8px 15px; 
+            text-align: center; 
+            font-size: 12px; 
+            color: #666; 
+        } 
+
+         /* 返回顶部按钮 */
+         #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        #backToTopBtn.show {
+            opacity: 1;
+        }
+
+        #backToTopBtn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+
+         @media (max-width: 768px) {
+            header {
+                padding: 0 50px 0 20px;
+            }
+             .logo {
+            padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                margin-left: 45px;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            .services {
+                display: none;
+            }
+
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+                padding-right: 50px;
+            }
+            .hamburger {
+                padding: 0;
+    
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .contact a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            
+            .nav-icon {
+                padding-left: 5%;
+            }
+            
+            .nav-menu {
+                padding: 10px 0;
+            }
+            .logo-text {
+            font-size: 19px;
+            }
+        }
+         @media (max-width: 390px) {
+            .logo-text {
+            font-size: 16px;
+
+        }
+         }
+    </style>
+</head>
+<body>
+    <!--头部-->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+
+                <span class="logo-text">饮食之道</span>
+            </a>
+        </div>
+       <div class="header-right">
+        <div class="contact">
+            <a href="gj01.html">热量计算</a> 
+            <a href="gj02.html">BMI计算</a> 
+        </div>
+             <div class="button-group">
+                <a href="login-register.html?action=signin" class="login-btn">登录</a>
+                <a href="login-register.html?action=register" class="register-btn">注册</a>
+            </div>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+             
+        
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-icon">
+                <img src="images/logo.png" alt="饮食之道">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="dietary.html">食疗养生</a></li>
+                <li><a href="drink.html" class="active">养生茶饮</a></li>
+                <li><a href="newest.html">养生社区</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <section class="herbal-milk-tea-section">
+        <div class="season-banner">
+            <h1>四季专属中草药奶茶</h1>
+            <p>根据季节变化，为您量身定制养生奶茶</p>
+        
+        </div>
+        <div class="header-container">
+            <span class="STYLE20">您的位置&gt;
+                <a href="index.html">首页</a>&gt;
+                <a href="drink.html">养生茶饮</a>&gt;四季专属
+            </span>
+        </div>
+        <div class="season-container">
+        
+            <!-- 春季卡片 -->
+            <div class="season-card">
+                <img src="./images/drink/byseason1.jpg" alt="春季奶茶">
+                <h2>春季</h2>
+                <p>选用金银花、薄荷等草药，搭配奶茶，可清热解毒、提神醒脑，帮助您唤醒春日活力。</p>
+            </div>
+
+            <!-- 夏季卡片 -->
+            <div class="season-card">
+                <img src="./images/drink/byseason2.jpg" alt="夏季奶茶">
+                <h2>夏季</h2>
+                <p>融入荷叶、绿豆等草药，制成清凉奶茶，能消暑解渴、清热祛湿，伴您度过炎炎夏日。</p>
+            </div>
+
+            <!-- 秋季卡片 -->
+            <div class="season-card">
+                <img src="./images/drink/byseason3.jpg" alt="秋季奶茶">
+                <h2>秋季</h2>
+                <p>采用百合、秋梨等草药，滋润奶茶，可润肺止咳、滋阴润燥，缓解秋燥不适。</p>
+            </div>
+
+            <!-- 冬季卡片 -->
+            <div class="season-card">
+                <img src="./images/drink/byseason4.jpg" alt="冬季奶茶">
+                <h2>冬季</h2>
+                <p>加入桂圆、红枣等草药，温暖奶茶，能补气养血、驱寒保暖，让您冬日不再寒冷。</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 底部 footer -->
+    <div class="footer"> 
+        <a href="gywm.html">关于我们</a> 
+        <a href="lxwm.html">联系我们</a> 
+        <a href="privacy.html">隐私政策</a> 
+        <a href="terms.html">使用条款</a> 
+        <a href="ditu.html">网站地图</a> 
+        <a href="liuyan.html">留言</a>
+    </div> 
+     <!-- 友情链接 -->
+    <div class="footer-links">
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+       
+    </div>
+    <!-- 版权声明 -->
+    <div class="copyright">
+      本网站所有信息未经授权禁止转载、摘编、复制及建立镜像，违者将依法追究法律责任。
+    <br>
+      违法和不良信息举报电话：400-123-4567 举报邮箱：jubao@example.com
+    <br>
+    &copy;Copyright 2025 - 2026 饮食之道 All Rights Reserved.
+     <br>粤ICP备2025410119号-1
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTopBtn">
+        <img src="images/胡萝卜-Carrot.png" alt="返回顶部">
+    </button>
+
+    <script>
+        // 返回顶部功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 汉堡菜单功能
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

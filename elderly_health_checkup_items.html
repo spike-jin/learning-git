@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老年人健康检查项目</title>
+    <style>
+        /* 全局样式，保持原有 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            background-color: #2c3e50;
+            box-shadow: 0 2px 10px rgba(190, 189, 189, 0.1);
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fffefe;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            padding-right: 7%;
+        }
+
+        .contact {
+            margin-right: 20px;
+            font-size: 14px;
+        }
+
+        .contact a {
+            text-decoration: none;
+            color: #fdfcfc;
+            margin: 0 10px;
+        }
+
+        .contact a:hover {
+            color: #ff6a00;
+        }
+
+        .button-group {
+            display: flex;
+        }
+
+        .login-btn {
+            margin-right: 15px;
+            padding: 8px 20px;
+            background-color: transparent;
+            border: 1px solid #ff6a00;
+            color: #ff6a00;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-btn:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
+
+        .register-btn {
+            padding: 8px 20px;
+            background-color: #ff6a00;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .register-btn:hover {
+            background-color: #e65c00;
+        }
+
+        .main-nav {
+            background-color: #f8f8f8;
+            padding: 0px 50px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-icon {
+            width: 70px;
+            height: 70px;
+            padding-left: 11%;
+        }
+
+        .nav-icon img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding-right: 7%;
+
+        }
+
+        .menu-toggle {
+            display: none
+        }
+
+        .nav-menu li {
+            margin: 0 30px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #ff6a00;
+        }
+
+        .nav-menu a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6a00;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        @media (max-width: 1200px) {
+            .nav-menu li {
+                margin: 0 20px;
+            }
+        }
+
+        @media (max-width: 1020px) {
+            .nav-menu li {
+                margin: 0 10px;
+            }
+        }
+
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 870px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .nav-icon {
+                display: none
+            }
+
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                margin: 0 30px;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 20px 0;
+                background-color: #f8f8f8;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 0 15px;
+            }
+        }
+
+        /* 老年人健康检查项目样式 */
+        .health-title {
+            font-size: 32px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .health-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .health-subtitle {
+            font-size: 24px;
+            color: #41586e;
+            margin-bottom: 15px;
+        }
+
+        .health-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .health-text li:hover {
+            color: #ff6a00;
+            transition: color 0.3s ease;
+        }
+
+        .checkup-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .checkup-table th,
+        .checkup-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .checkup-table td:hover {
+            color: #ff6a00;
+            transition: color 0.3s ease; 
+        }
+
+        .checkup-table th {
+            background-color: #f2f2f2;
+        }
+
+        .precaution {
+            color: #be0000;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* 设置链接点击前和点击后的颜色 */
+        .content a:link {
+            color: #6C757D;/* 点击前颜色 */
+        }
+
+        .content a:visited {
+            color: #434a50; /* 点击后颜色 */
+        }
+
+        /* 底部 footer */
+        .footer {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-links {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 5px 0;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: rgb(22, 22, 22);
+        }
+
+        .footer-links a:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+            color: #666;
+        }
+
+        /* 版权声明区域样式 */
+        .copyright {
+            background-color: #f4f4f4;
+            padding: 8px 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* 返回顶部按钮 */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        #backToTopBtn.show {
+            opacity: 1;
+        }
+
+        #backToTopBtn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+         @media (max-width: 768px) {
+            header {
+                padding: 0 50px 0 20px;
+            }
+             .logo {
+            padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                margin-left: 45px;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            .services {
+                display: none;
+            }
+
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+                padding-right: 50px;
+            }
+            .hamburger {
+                padding: 0;
+    
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .contact a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            
+            .nav-icon {
+                padding-left: 5%;
+            }
+            
+            .nav-menu {
+                padding: 10px 0;
+            }
+            .logo-text {
+            font-size: 19px;
+            }
+        }
+         @media (max-width: 390px) {
+            .logo-text {
+            font-size: 16px;
+
+        }
+         }
+    </style>
+</head>
+<body>
+    <!--头部-->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+
+                <span class="logo-text">饮食之道</span>
+            </a>
+        </div>
+       <div class="header-right">
+            <div class="button-group">
+                <a href="login-register.html?action=signin" class="login-btn">登录</a>
+                <a href="login-register.html?action=register" class="register-btn">注册</a>
+            </div>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+             
+        
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-icon">
+                <img src="images/logo.png" alt="饮食之道">
+            </div>
+            <ul class="nav-menu">
+               <li><a href="index.html">首页</a></li>
+                <li><a href="dietary.html">食疗养生</a></li>
+                <li><a href="drink.html">养生茶饮</a></li>
+                <li><a href="newest.html" class="active">养生社区</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- 老年人健康检查项目内容 -->
+    <div class="content">
+        <h1 class="health-title">老年人健康检查项目</h1>
+        <p><a href="aged.html">点击此处查看更多老年人相关信息</a></p>
+
+        <div class="health-section">
+            <h2 class="health-subtitle">为什么老年人需要定期健康检查</h2>
+            <p class="health-text">随着年龄的增长，老年人身体各器官功能逐渐衰退，患病的风险也随之增加。很多疾病在早期可能没有明显症状，通过定期健康检查可以早期发现潜在的健康问题，及时采取干预措施，提高治疗效果，降低疾病的危害。同时，定期检查还能帮助老年人了解自己的身体状况，调整生活方式和饮食习惯，预防疾病的发生。</p>
+        </div>
+
+        <div class="health-section">
+            <h2 class="health-subtitle">基础检查项目</h2>
+            <table class="checkup-table">
+                <thead>
+                    <tr>
+                        <th>检查项目</th>
+                        <th>检查内容</th>
+                        <th>检查意义</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>一般检查</td>
+                        <td>身高、体重、血压、心率等</td>
+                        <td>评估身体基本状况，判断是否存在肥胖、高血压、心动过速等问题</td>
+                    </tr>
+                    <tr>
+                        <td>视力、听力检查</td>
+                        <td>视力表测试、听力测试</td>
+                        <td>早期发现视力、听力下降，预防眼部和耳部疾病的进一步发展</td>
+                    </tr>
+                    <tr>
+                        <td>口腔检查</td>
+                        <td>牙齿、牙龈、口腔黏膜检查</td>
+                        <td>检查是否存在龋齿、牙周炎、口腔溃疡等问题，维护口腔健康</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="health-section">
+            <h2 class="health-subtitle">血液检查项目</h2>
+            <table class="checkup-table">
+                <thead>
+                    <tr>
+                        <th>检查项目</th>
+                        <th>检查内容</th>
+                        <th>检查意义</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>血常规</td>
+                        <td>红细胞、白细胞、血小板计数等</td>
+                        <td>了解是否存在贫血、感染、血液系统疾病等</td>
+                    </tr>
+                    <tr>
+                        <td>血生化</td>
+                        <td>肝功能（谷丙转氨酶、谷草转氨酶等）、肾功能（肌酐、尿素氮等）、血脂（胆固醇、甘油三酯等）、血糖等</td>
+                        <td>评估肝脏、肾脏功能，检测血脂、血糖水平，预防心血管疾病、糖尿病等</td>
+                    </tr>
+                    <tr>
+                        <td>凝血功能</td>
+                        <td>凝血酶原时间、部分凝血活酶时间等</td>
+                        <td>了解血液凝固能力，预防出血性或血栓性疾病</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="precaution">血液检查一般需要空腹进行，建议检查前一天晚上 10 点后禁食、禁水。</p>
+        </div>
+
+        <div class="health-section">
+            <h2 class="health-subtitle">影像学检查项目</h2>
+            <table class="checkup-table">
+                <thead>
+                    <tr>
+                        <th>检查项目</th>
+                        <th>检查内容</th>
+                        <th>检查意义</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>胸部 X 光</td>
+                        <td>胸部正侧位片</td>
+                        <td>检查肺部是否存在炎症、结核、肿瘤等病变</td>
+                    </tr>
+                    <tr>
+                        <td>腹部 B 超</td>
+                        <td>肝脏、胆囊、胰腺、脾脏、肾脏等器官检查</td>
+                        <td>检测器官形态、大小、结构是否正常，发现结石、囊肿、肿瘤等病变</td>
+                    </tr>
+                    <tr>
+                        <td>心脏超声</td>
+                        <td>心脏结构和功能检查</td>
+                        <td>评估心脏功能，诊断心肌病、冠心病、心律失常等心脏疾病</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="precaution">腹部 B 超检查前需要空腹，心脏超声检查一般无需特殊准备。</p>
+        </div>
+
+        <div class="health-section">
+            <h2 class="health-subtitle">特殊检查项目</h2>
+            <p class="health-text">对于有特定疾病家族史或存在相关症状的老年人，还可能需要进行以下特殊检查项目：</p>
+            <ul class="health-text">
+                <li><strong>胃肠镜检查</strong>：检查食管、胃、十二指肠、结肠等部位的病变，早期发现消化道肿瘤。建议 50 岁以上的老年人或有胃肠道症状的人群定期进行检查。</li>
+                <li><strong>骨密度检查</strong>：评估骨骼强度，检测是否存在骨质疏松症，预防骨折的发生。绝经后女性和老年男性建议定期检查。</li>
+                <li><strong>肿瘤标志物检查</strong>：检测血液中特定的肿瘤标志物水平，辅助肿瘤的早期诊断和筛查。常见的肿瘤标志物有甲胎蛋白（AFP）、癌胚抗原（CEA）等。</li>
+            </ul>
+        </div>
+
+        <div class="health-section">
+            <h2 class="health-subtitle">检查频率建议</h2>
+            <p class="health-text">一般来说，老年人每年应进行一次全面的健康检查。对于患有慢性疾病（如高血压、糖尿病等）的老年人，建议每 3 - 6 个月进行一次相关指标的复查，以便及时调整治疗方案。</p>
+        </div>
+    </div>
+
+    <!-- 底部，保持原有 -->
+    <div class="footer">
+        <a href="gywm.html">关于我们</a>
+        <a href="lxwm.html">联系我们</a>
+        <a href="privacy.html">隐私政策</a>
+        <a href="terms.html">使用条款</a>
+        <a href="ditu.html">网站地图</a>
+        <a href="liuyan.html">留言</a>
+    </div>
+    <!-- 友情链接 -->
+    <div class="footer-links">
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+    </div>
+    <!-- 版权声明 -->
+    <div class="copyright">
+        本网站所有信息未经授权禁止转载、摘编、复制及建立镜像，违者将依法追究法律责任。
+        <br>
+        违法和不良信息举报电话：400 - 123 - 4567 举报邮箱：jubao@example.com
+        <br>
+        &copy;Copyright 2025 - 2026 饮食之道 All Rights Reserved.
+        <br>粤ICP备2025410119号-1
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTopBtn">
+        <img src="images/胡萝卜-Carrot.png" alt="返回顶部">
+    </button>
+    <script>
+        // 返回顶部功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 汉堡菜单功能
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

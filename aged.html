@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>养生人群-老年人</title>
+    
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            background-color: #2c3e50;
+            box-shadow: 0 2px 10px rgba(190, 189, 189, 0.1);
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fffefe;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            padding-right: 7%;
+        }
+        
+        .contact {
+            margin-right: 30px;
+            font-size: 14px;
+        }
+        
+        .contact a {
+            text-decoration: none;
+            color: #fdfcfc;
+            margin: 0 10px;
+        }
+        
+        .contact a:hover {
+            color: #ff6a00;
+        }
+        
+        .button-group {
+            display: flex;
+        }
+        
+        .login-btn {
+            margin-right: 15px;
+            padding: 8px 20px;
+            background-color: transparent;
+            border: 1px solid #ff6a00;
+            color: #ff6a00;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .login-btn:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
+        
+        .register-btn {
+            padding: 8px 20px;
+            background-color: #ff6a00;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .register-btn:hover {
+            background-color: #e65c00;
+        }
+        
+        .main-nav {
+            background-color: #f8f8f8;
+            padding: 0px 50px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-icon {
+            width: 70px;
+            height: 70px;
+            padding-left: 11%;
+        }
+        .nav-icon img {
+            width: 80px;
+            height: 80px;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding-right: 7%;
+            
+        }
+        .menu-toggle{display:none}
+        .nav-menu li {
+            margin: 0 30px;
+        }
+        
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        .nav-menu a:hover, 
+        .nav-menu a.active {
+            color: #ff6a00;
+        }
+        
+        .nav-menu a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6a00;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        @media (max-width: 1200px) {
+            .nav-menu li {
+            margin: 0 20px;
+        }
+        }
+        @media (max-width: 1020px) {
+            .nav-menu li {
+            margin: 0 10px;
+        }
+        }       
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 870px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .nav-icon{display:none}
+            .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 30px;
+        }
+            .nav-menu {
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 20px 0;
+                background-color: #f8f8f8;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                margin: 0 15px;
+            }
+        }
+
+
+        /* 主容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto 30px;
+        }
+
+        /* 网格布局系统 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+            margin-top: 3px;
+        }
+
+        /* 左侧内容区样式 */
+        .content-section {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 列表项样式 */
+        .health-benefits {
+            list-style-type: none;
+            padding-left: 25px;
+            margin-top: 15px;
+        }
+
+        .benefit-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            border-left: 4px solid #007aff;
+        }
+
+        /* 主要内容区域 */
+        .content_bottom {
+            background: white;
+            padding: 25px;
+        }
+
+        .content_bottom h2 {
+            color: #424242;
+            text-transform: uppercase;
+            padding: 5px 0;
+            font-family: 'ambleregular';
+            font-size: 1.5em;
+        }
+
+        .content_bottom p {
+            color: #969494;
+            font-size: 0.85em;
+            line-height: 1.8em;
+        }
+
+        .feature_list li {
+            padding: 8px 0 8px 15px;
+            color: #888;
+            font-size: 0.85em;
+        }
+
+        /* 右侧导航样式 */
+
+        .services {
+            padding: 25px;     
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 18px;
+        }
+        /* 侧边栏样式 */
+        .services_list ul {
+            list-style: none; 
+            padding-left: 0;
+        }
+        .services_list li {
+            padding-top: 10px;
+        }
+        .services_list li a {
+            text-decoration: none; 
+            display: block;
+            padding: 8px 0;
+            color: #969494;
+            border-bottom: 1px solid #D6D6D6;
+            font-size: 0.85em;
+        }
+
+        .services_list li a:hover {
+            color: #EE5010;
+        }
+
+        .projects {
+            padding: 25px;     
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .project_img {
+            background: white;
+            padding: 25px 0px 25px 6px;
+            margin-top: 5px;
+        }
+
+        .project_img li {
+            list-style: none; 
+        }
+
+        .project_img li a:hover {
+            color: #EE5010;
+        }
+
+      
+        .image-text-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .image-text-container img {
+            width: 80px;
+            height: 60px;
+        }
+
+        .image-text-container a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .view-all a {
+            color: #EE5010;
+            text-decoration: none; 
+            padding-left: 15px;
+            font-family: 'ambleregular';
+            font-size: 0.85em;
+        }
+
+        /* 标签栏布局 */
+        .tab-container {
+            justify-content: space-between;
+
+            border-bottom: 1px solid #eee;
+            padding-left: 35px;
+            padding-top: 30px;
+        }
+
+        .tab-button {
+            background-color: #908989;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        .tab-button:hover {
+            background-color:#007aff;
+        }
+
+        .tab-button.active {
+            background-color: #007aff;
+            color: white;
+        }
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 12px;
+            color: #007aff;
+            text-decoration: none;
+        }
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quick-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .quick-link-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .quick-link-text {
+            font-size: 12px;
+        }
+        /* 底部 footer */
+        .footer { 
+            background-color: #f4f4f4; 
+            padding: 10px; 
+            text-align: center; 
+        } 
+
+        .footer a { 
+            color: #333; 
+            text-decoration: none; 
+            margin: 0 15px; 
+        } 
+
+        .footer-links {
+            background-color: #f4f4f4; 
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 5px 0;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .footer-links a {
+            color: #333; 
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .footer-links a:hover {
+            color: rgb(22, 22, 22);
+        }
+        
+        .footer-links a:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+            color: #666;
+        }
+        
+        /* 版权声明区域样式 */ 
+        .copyright { 
+            background-color: #f4f4f4; 
+            padding: 8px 15px; 
+            text-align: center; 
+            font-size: 12px; 
+            color: #666; 
+        } 
+
+         /* 返回顶部按钮 */
+         #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        #backToTopBtn.show {
+            opacity: 1;
+        }
+
+        #backToTopBtn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+        @media (max-width: 990px) {
+            .main-content {
+            grid-template-columns: 1fr
+            }
+
+        }
+         @media (max-width: 768px) {
+            header {
+                padding: 0 50px 0 20px;
+            }
+             .logo {
+            padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                margin-left: 45px;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+            }
+
+
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+                padding-right: 50px;
+            }
+            .hamburger {
+                padding: 0;
+    
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .contact a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            
+            .nav-icon {
+                padding-left: 5%;
+            }
+            
+            .nav-menu {
+                padding: 10px 0;
+            }
+            .logo-text {
+            font-size: 19px;
+            }
+        }
+         @media (max-width: 390px) {
+            .logo-text {
+            font-size: 16px;
+
+        }
+        }
+    </style>
+</head>
+<body>
+    <!--头部-->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+
+                <span class="logo-text">饮食之道</span>
+            </a>
+        </div>
+       <div class="header-right">
+        <div class="contact">
+            <a href="gj01.html">热量计算</a> 
+            <a href="gj02.html">BMI计算</a> 
+        </div>
+             <div class="button-group">
+                <a href="login-register.html?action=signin" class="login-btn">登录</a>
+                <a href="login-register.html?action=register" class="register-btn">注册</a>
+            </div>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+             
+        
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-icon">
+                <img src="images/logo.png" alt="饮食之道">
+            </div>
+            <ul class="nav-menu">
+               <li><a href="index.html">首页</a></li>
+                <li><a href="dietary.html">食疗养生</a></li>
+                <li><a href="drink.html">养生茶饮</a></li>
+                <li><a href="newest.html" class="active">养生社区</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="container">
+        <div class="main-content">
+            <!-- 左侧主内容区 -->
+            <div class="content-section">
+                <!-- 栏目切换区 -->
+                <!-- 内容展示区 -->
+                <div id="content-display">
+                    <!-- 老年人养生内容 -->
+                    <div class="content">
+                        <div class="content_bottom">
+                            <h2>老年人养生指南</h2>
+                            <p>随着年龄的增长，老年人的身体机能逐渐下降，养生保健变得尤为重要。以下是一些针对老年人的养生建议，帮助他们保持健康、延缓衰老。</p>
+                            
+                            <h3>一、饮食养生</h3>
+                            <p>老年人的饮食应注重营养均衡，宜选择易消化、富含蛋白质、维生素和矿物质的食物。</p>
+                            <ul class="health-benefits">
+                                <li class="benefit-item">多吃蔬菜水果：每天摄入5种以上蔬果，补充维生素和膳食纤维。</li>
+                                <li class="benefit-item">适量摄入优质蛋白：如鱼、瘦肉、豆类、蛋类和奶制品，维持肌肉量。</li>
+                                <li class="benefit-item">控制盐分摄入：每日不超过6克，预防高血压。</li>
+                                <li class="benefit-item">少食多餐：避免一次性进食过多，减轻消化负担。</li>
+                            </ul>
+                            
+                            <div class="image-text-container">
+                                <div>
+                                    <h4>老年人养生食谱推荐</h4>
+                                    <p>燕麦粥配坚果、清蒸鱼、蔬菜汤等都是适合老年人的健康食谱。</p>
+                                </div>
+                            </div>
+                            
+                            <h3>二、运动养生</h3>
+                            <p>适当的运动有助于增强老年人的体质，提高生活质量。</p>
+                            <ul class="health-benefits">
+                                <li class="benefit-item">散步：每天30分钟，有助于改善心血管功能。</li>
+                                <li class="benefit-item">太极拳：每周3-4次，增强平衡能力和柔韧性。</li>
+                                <li class="benefit-item">简单的伸展运动：每天进行，保持关节灵活性。</li>
+                                <li class="benefit-item">轻度力量训练：使用轻重量器械或弹力带，维持肌肉力量。</li>
+                            </ul>
+                            
+                            <div class="image-text-container">
+                                
+                                <div>
+                                    <h4>适合老年人的运动方式</h4>
+                                    <p>散步、太极拳和简单伸展运动是老年人保持活力的好选择。</p>
+                                </div>
+                            </div>
+                            
+                            <h3>三、心理养生</h3>
+                            <p>保持良好的心理状态对老年人的健康至关重要。</p>
+                            <ul class="health-benefits">
+                                <li class="benefit-item">保持社交活动：参加社区活动或与家人朋友聚会，避免孤独感。</li>
+                                <li class="benefit-item">培养兴趣爱好：如绘画、书法、园艺等，丰富精神生活。</li>
+                                <li class="benefit-item">保持积极心态：面对生活变化时保持乐观，必要时寻求心理支持。</li>
+                                <li class="benefit-item">适当回忆美好往事：有助于增强自我认同感和幸福感。</li>
+                            </ul>
+                            
+                            <div class="image-text-container">
+                                <div>
+                                    <h4>老年人心理调适方法</h4>
+                                    <p>社交活动、兴趣爱好和积极心态是保持老年人心理健康的三大要素。</p>
+                                </div>
+                            </div>
+
+                             <h3>四、生活习惯</h3>
+                            <p>良好的生活习惯有助于老年人维持健康，提高生活品质。</p>
+                            <ul class="health-benefits">
+                                <li class="benefit-item">规律作息：保持固定的睡眠和起床时间，有助于维持身体的生物钟。</li>
+                                <li class="benefit-item">适度晒太阳：每天15-20分钟，有助于维生素D的合成，促进钙吸收。</li>
+                                <li class="benefit-item">保持室内空气流通：定期开窗通风，保持空气新鲜。</li>
+                                <li class="benefit-item">定期体检：每年至少进行一次全面体检，及时发现和预防疾病。</li>
+                            </ul>
+                            
+                            <h3>五、慢性疾病管理</h3>
+                            <p>老年人是慢性疾病的高发人群，有效的疾病管理至关重要。</p>
+                            <ul class="health-benefits">
+                                <li class="benefit-item">遵医嘱服药：按时按量服用药物，定期复查。</li>
+                                <li class="benefit-item">监测生命体征：如血压、血糖等，保持在正常范围内。</li>
+                                <li class="benefit-item">适当运动：根据身体状况选择合适的运动方式，有助于控制病情。</li>
+                                <li class="benefit-item">健康饮食：有助于控制体重，减轻疾病负担。</li>
+                            </ul>
+                            
+                            <p>老年人养生需要综合考虑饮食、运动、心理、生活习惯和慢性疾病管理等多方面因素。通过科学合理的养生方法，可以提高老年人的生活质量，延缓衰老过程，享受健康快乐的晚年生活。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧导航栏 -->
+            <aside class="sidebar-nav">
+                <div class="sidebar">
+                    <div class="services">
+                        <h3>相关推荐</h3>
+                        <div class="services_list">
+                            <ul>
+                                <li><a href="elderly_spring_health_tips.html">老年人春季养生要点</a></li>
+                                <li><a href="elderly_health_tea.html">适合老年人的养生茶</a></li>
+                                <li><a href="elderly_diet_guide.html">老年人膳食搭配指南</a></li>
+                                <li><a href="elderly_winter_warmth.html">冬季老年人保暖措施</a></li>
+                                <li><a href="elderly_disease_prevention.html">老年人常见疾病预防</a></li>
+                                <li><a href="elderly_fitness_exercises.html">简单易学的老年人健身操</a></li>
+                                <li><a href="elderly_mental_health.html">老年人心理健康维护</a></li>
+                                <li><a href="elderly_sleep_improvement.html">老年人睡眠质量改善方法</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="projects">
+                        <h3>其它内容</h3>
+                        <div class="project_img">
+                            <li>
+                                <div class="image-text-container">
+                                    <a href="elderly_nutrition_menu.html">老年人营养餐搭配示例</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="image-text-container">
+                                    <a href="elderly_indoor_exercises.html">适合老年人的室内运动</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="image-text-container">
+                                    <a href="elderly_mental_health_activities.html">老年人心理健康活动</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="image-text-container">
+                                    <a href="elderly_health_checkup_items.html">老年人健康检查项目</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="image-text-container">
+                                    <a href="elderly_safe_home_decoration.html">老年人安全家居布置</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="image-text-container">
+                                    <a href="social_activities.html">老年人社交活动建议</a>
+                                </div>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">
+                            <span>快速导航</span>
+                        </div>
+                        <div class="quick-links">
+                            <a href="index.html" class="quick-link">
+                                <div class="quick-link-icon">🏠</div>
+                                <div class="quick-link-text">返回首页</div>
+                            </a>
+                            <a href="crowd.html" class="quick-link">
+                                <div class="quick-link-icon">←</div>
+                                <div class="quick-link-text">返回</div>
+                            </a>
+                            <a href="#" class="quick-link">
+                                <div class="quick-link-icon">🔍</div>
+                                <div class="quick-link-text">发现话题</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+        </div>
+    </main>
+
+     <!-- 底部 footer -->
+     <div class="footer"> 
+        <a href="gywm.html">关于我们</a> 
+        <a href="lxwm.html">联系我们</a> 
+        <a href="privacy.html">隐私政策</a> 
+        <a href="terms.html">使用条款</a> 
+        <a href="ditu.html">网站地图</a> 
+        <a href="liuyan.html">留言</a>
+    </div> 
+     <!-- 友情链接 -->
+    <div class="footer-links">
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+    </div>
+    <!-- 版权声明 -->
+    <div class="copyright">
+      本网站所有信息未经授权禁止转载、摘编、复制及建立镜像，违者将依法追究法律责任。
+    <br>
+      违法和不良信息举报电话：400-123-4567 举报邮箱：jubao@example.com
+    <br>
+    &copy;Copyright 2025 - 2026 饮食之道 All Rights Reserved.
+     <br>粤ICP备2025410119号-1
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTopBtn">
+        <img src="images/胡萝卜-Carrot.png" alt="返回顶部">
+    </button>
+    <script>
+        // 返回顶部功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+  
+                 // 汉堡菜单功能
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

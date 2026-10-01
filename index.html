@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>饮食之道-首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            background-color: #2c3e50;
+            box-shadow: 0 2px 10px rgba(190, 189, 189, 0.1);
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fffefe;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            padding-right: 7%;
+        }
+
+        .contact {
+            margin-right: 30px; 
+            font-size: 14px;
+        }
+
+       .contact a {
+            text-decoration: none;
+            color: #fdfcfc;
+            margin: 0 10px;
+        }
+
+        .contact a:hover {
+            color: #ff6a00;
+        }
+
+        .button-group {
+            display: flex;
+        }
+        
+        .login-btn {
+            margin-right: 15px;
+            padding: 8px 20px;
+            background-color: transparent;
+            border: 1px solid #ff6a00;
+            color: #ff6a00;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .login-btn:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
+        
+        .register-btn {
+            padding: 8px 20px;
+            background-color: #ff6a00;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .register-btn:hover {
+            background-color: #e65c00;
+        }
+        
+        .main-nav {
+            background-color: #f8f8f8;
+            padding: 0px 50px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-icon {
+            width: 70px;
+            height: 70px;
+            padding-left: 11%;
+        }
+        .nav-icon img {
+            width: 80px;
+            height: 80px;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding-right: 7%;
+            
+        }
+        .menu-toggle{display:none}
+        .nav-menu li {
+            margin: 0 30px;
+        }
+        
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        .nav-menu a:hover, 
+        .nav-menu a.act {
+            color: #ff6a00;
+        }
+        
+        .nav-menu a.act::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6a00;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+
+          
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 1200px) {
+            .nav-menu li {
+            margin: 0 20px;
+        }
+        }
+        @media (max-width: 1020px) {
+            .nav-menu li {
+            margin: 0 10px;
+        }
+        }   
+        @media (max-width: 870px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .nav-icon{display:none}
+            .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 30px;
+        }
+            .nav-menu {
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 20px 0;
+                background-color: #f8f8f8;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                margin: 0 15px;
+            }
+        }
+/*========================================================================================================*/   
+        .container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            height: 400px;
+        }
+        
+        .sidebar {
+            width: 300px;
+            background-color: rgba(150, 150, 150, 0.7);
+            backdrop-filter: blur(5px);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: 10;
+        }
+/*========================================================================================================*/
+        /*.main-content*/
+        .main-content {
+           
+            width: 100%;
+            height: 400px;
+            position: relative;
+            z-index: 1;
+        }
+        /*sidebar*/
+        .side-col {
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 18px;
+        }
+        
+        .side-icon {
+            width: 20px;
+            margin-right: 10px; 
+        }
+        
+        .side-text {
+            white-space: nowrap;
+        }
+        
+        .side-arrow {
+            width: 20px;
+            text-align: right;
+            margin-left: auto; 
+        }
+        
+        .popup-container {
+            width: 40%;
+            position: absolute;
+            left: 300px;
+            height: 400px;
+            top: 0;
+            background-color: white;
+            padding: 30px;
+            display: none;
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        
+        .popup-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .popup-link {
+            flex-basis: 20%;
+            margin: 15px;
+            text-align: center;
+        }
+        
+        .popup-title {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .popup-desc {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 50;
+        }
+        
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .carousel-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        
+        .carousel-item.active {
+            display: block;
+        }
+        
+        .flower-image {
+            width: 100%; 
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .flower-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+        
+        .text-overlay {
+            position: absolute;
+            bottom: 200px;
+            right: 33%;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            background-color: transparent;
+            border: 2px solid #ccc; 
+        }
+        
+        .slider-dot.active {
+            background-color: #1E90FF; 
+            border: 2px solid #1E90FF;
+        }
+        
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 20;
+            border-radius: 50%;
+        }
+        
+        .slider-prev {
+            left: 320px;
+        }
+        
+        .slider-next {
+            right: 20px;
+        }
+/*========================================================================================================*/
+        /*columns*/
+        .columns {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .columns-header {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .columns-header h1, .columns-header h2 {
+            font-size: 24px;
+            margin-right: 30px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .columns-header h1 {
+            color: #333;
+        }
+        
+        .columns-header h2 {
+            color: #333;
+        }
+        
+        .active {
+            color: #007bff !important; 
+        }
+        
+        .menu-columns {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background: white;
+            border-radius: 8px;
+            padding: 30px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            width: calc(25% - 20px);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .menu-name {
+            text-align: center;
+            padding-top: 1px;
+            font-size: 16px;
+            color: #333;
+            z-index: 1000;
+        }
+        
+        .tag {
+            position: absolute;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: white;
+            z-index: 1000;
+        }
+        
+        .tag-new {
+            background-color: #dfdcdc;
+        }
+        
+
+        .collection {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            z-index: 1;
+        }
+        
+        .tea-dishes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .tea-dish {
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .tea-dish:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .columns {
+            width: 100%;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+/*========================================================================================================*/
+        /*blog*/
+        .blog {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section {
+            flex: 1;
+            border-radius: 4px;
+            padding: 20px;
+        }
+        
+        .news-section {
+            flex: 2;
+        }
+        
+        .research-section {
+            flex: 1;
+        }
+        
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .section a{
+            text-decoration: none;
+        }
+        .section-title h2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        .section-title h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background-color: #1e88e5;
+        }
+        
+        .view-more {
+            color: #1e88e5;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .news-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .date {
+            width: 60px;
+            height: 60px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .date-day {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00796b;
+        }
+        
+        .date-month {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+        
+        .news-content {
+            flex: 1;
+        }
+        
+        .news-title {
+            font-size: 14px;
+            color: #333;
+            margin-top: 5px;
+            line-height: 1.5;
+            max-height: 42px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+        }
+        
+        .news-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+        
+        /* 卡片设计 */
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-bottom: 3px solid #eee;
+        }
+
+        .card-content {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-text {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-button {
+            align-self: flex-end; 
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #00796b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .card-button:hover {
+            background: #00796b;
+        }
+
+                /* 底部 footer */
+        .footer { 
+            background-color: #f4f4f4; 
+            padding: 10px; 
+            text-align: center; 
+        } 
+
+        .footer a { 
+            color: #333; 
+            text-decoration: none; 
+            margin: 0 15px; 
+        } 
+
+        .footer-links {
+            background-color: #f4f4f4; 
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 5px 0;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .footer-links a {
+            color: #333; 
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .footer-links a:hover {
+            color: rgb(22, 22, 22);
+        }
+        
+        .footer-links a:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+            color: #666;
+        }
+        
+        /* 版权声明区域样式 */ 
+        .copyright { 
+            background-color: #f4f4f4; 
+            padding: 8px 15px; 
+            text-align: center; 
+            font-size: 12px; 
+            color: #666; 
+        } 
+
+         /* 返回顶部按钮 */
+         #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        #backToTopBtn.show {
+            opacity: 1;
+        }
+
+        #backToTopBtn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+             .text-overlay {
+                transform: translateX(100px);
+             }
+            .popup-container {
+                width: 60%;
+                left: 240px;
+            }
+            
+            .blog {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 480px) {
+            .text-overlay {
+                transform: none;
+            }
+            .sidebar {
+             display: none;
+             }
+             .popup-container {
+                width: 60%;
+                left: 200px;
+            }
+      
+            .carousel {
+                height: 300px;
+            }
+            
+            .flower-image {
+                height: 300px;
+            }
+            
+            .text-overlay {
+                bottom: 150px;
+                right: 250px;
+            }
+            
+            .title {
+                font-size: 20px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+            .slider-prev {
+                left: 15px;
+            }
+            .text-overlay {
+                transform: none;
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+             }
+             .two-columns {
+            grid-template-columns: repeat(1, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 0 50px 0 20px;
+            }
+             .logo {
+            padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                margin-left: 45px;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            .menu-item {
+               width:  calc(50% - 20px);
+            }
+        }
+        @media (max-width: 620px) {
+            .logo {
+                padding-left:5% ;
+            }
+            .gj-one {
+                display: none;
+            }
+            .register-btn {
+                display: none;
+            }
+            .footer { 
+            padding: 7px; 
+            } 
+            .footer a {      
+            text-decoration: none; 
+            margin: 0 7px; 
+            } 
+
+            .footer-links {
+            gap: 6px;
+           }
+        
+            .footer-links a {
+            font-size: 10px;
+            }
+            .footer-links a:not(:last-child)::after {
+            margin-left: 7px;
+            }
+        }
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+                padding-right: 50px;
+            }
+            
+            .logo {
+                padding: 0;
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .contact a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            
+            .nav-icon {
+                padding-left: 5%;
+            }
+            
+            .nav-menu {
+                padding: 10px 0;
+            }
+            .logo-text {
+            font-size: 19px;
+            }
+            .content {
+                padding: 15px;
+            }
+        }
+         @media (max-width: 390px) {
+            .logo-text {
+            font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!--头部-->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+
+                <span class="logo-text">饮食之道</span>
+            </a>
+        </div>
+       <div class="header-right">
+        <div class="contact">
+            <a href="gj01.html" class="gj-one">热量计算</a> 
+            <a href="gj02.html"class="gj-two">BMI计算</a> 
+        </div>
+            <div class="button-group">
+                <a href="login-register.html?action=signin" class="login-btn">登录</a>
+                <a href="login-register.html?action=register" class="register-btn">注册</a>
+            </div>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+             
+        
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-icon">
+                <img src="images/logo.png" alt="饮食之道">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="act">首页</a></li>
+                <li><a href="dietary.html">食疗养生</a></li>
+                <li><a href="drink.html">养生茶饮</a></li>
+                <li><a href="newest.html">养生知识科普</a></li>
+                <button class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </ul>
+        </div>
+    </nav>
+
+    <!--内容-->
+    <div class="container">
+        <div class="overlay" id="overlay"></div>
+
+        <!--食疗推荐-->
+        <div class="popup-container" id="popup">
+            <div class="popup-links">
+                <div class="popup-link">
+                    <div class="popup-title">山药排骨汤</div>
+                    <div class="popup-desc">养生食谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">南瓜小米粥</div>
+                    <div class="popup-desc">养生食谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">冬瓜海带汤</div>
+                    <div class="popup-desc">养生食谱</div>
+                </div>
+            </div>
+            
+            <div class="popup-links">
+                <div class="popup-link">
+                    <div class="popup-title">雪梨川贝汤</div>
+                    <div class="popup-desc">养生食谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">芹菜豆腐羹</div>
+                    <div class="popup-desc">养生食谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">南瓜虾仁煲</div>
+                    <div class="popup-desc">养生食谱</div>
+                </div>
+            </div>
+            
+            <div class="popup-links">
+                <div class="popup-link">
+                    <div class="popup-title">菠菜和豆腐</div>
+                    <div class="popup-desc">食疗禁忌</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">孕期慎食</div>
+                    <div class="popup-desc">食疗禁忌</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">猪肉和田螺</div>
+                    <div class="popup-desc">食疗禁忌</div>
+                </div>
+            </div>
+        </div>
+
+        <!--茶饮大全-->
+        <div class="popup-container" id="popup1">
+            <div class="popup-links">
+                <div class="popup-link">
+                    <div class="popup-title">三七花茶</div>
+                    <div class="popup-desc">看看大家在喝</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">麦冬茶</div>
+                    <div class="popup-desc">看看大家在喝</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">薏仁茶</div>
+                    <div class="popup-desc">看看大家在喝</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">薄荷柠檬茶</div>
+                    <div class="popup-desc">近期最受欢迎</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">雪梨百合茶</div>
+                    <div class="popup-desc">看看大家在喝</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">桂花龙井茶</div>
+                    <div class="popup-desc">看看大家在喝</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">柠檬水果茶</div>
+                    <div class="popup-desc">近期最受欢迎</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">西瓜水果茶</div>
+                    <div class="popup-desc">近期最受欢迎</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">金银花甘草茶</div>
+                    <div class="popup-desc">近期最受欢迎</div>
+                </div>
+            </div>
+            
+           
+        </div>
+        <!--饮食健康-->
+        <div class="popup-container" id="popup2">
+            <div class="popup-links">
+                <div class="popup-link">
+                    <div class="popup-title">山药排骨汤</div>
+                    <div class="popup-desc">食疗菜谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">南瓜小米粥</div>
+                    <div class="popup-desc">食疗菜谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">南瓜虾仁煲</div>
+                    <div class="popup-desc">食疗菜谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">雪梨川贝汤</div>
+                    <div class="popup-desc">食疗菜谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">冬瓜海带汤</div>
+                    <div class="popup-desc">食疗菜谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">芹菜豆腐羹</div>
+                    <div class="popup-desc">食疗菜谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">莲藕排骨汤</div>
+                    <div class="popup-desc">食疗菜谱</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">核桃芝麻糊</div>
+                    <div class="popup-desc">食疗菜谱</div>
+                </div>
+            </div>
+        </div>
+
+        <!--人群专区-->
+        <!-- <div class="popup-container" id="popup3">
+            <h2>人群专区</h2>
+            <p>这里是人群专区的内容。</p>
+        </div> -->
+        
+        <div class="popup-container" id="popup4">
+            <div class="popup-links">
+                <div class="popup-link">
+                    <div class="popup-title">婴幼儿</div>
+                    <div class="popup-desc">人群专区</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">青年人</div>
+                    <div class="popup-desc">人群专区</div>
+                </div>
+            </div>
+            <div class="popup-links">
+                <div class="popup-link">
+                    <div class="popup-title">中年人</div>
+                    <div class="popup-desc">人群专区</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">老年人</div>
+                    <div class="popup-desc">人群专区</div>
+                </div>
+            </div>
+            <div class="popup-links">
+                <div class="popup-link">
+                    <div class="popup-title">春季节气茶饮</div>
+                    <div class="popup-desc">季节饮食</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">夏季节气茶饮</div>
+                    <div class="popup-desc">季节饮食</div>
+                </div>
+            </div>
+            <div class="popup-links">
+                <div class="popup-link">
+                    <div class="popup-title">秋季节气茶饮</div>
+                    <div class="popup-desc">季节饮食</div>
+                </div>
+                <div class="popup-link">
+                    <div class="popup-title">冬季节气茶饮</div>
+                    <div class="popup-desc">季节饮食</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="side-col" onclick="showPopup()">
+                <span class="side-icon">📄</span>
+                <span class="side-text">食谱推荐</span>
+                <span class="side-arrow">›</span>
+            </div>
+            
+            <div class="side-col" onclick="showPopup1()">
+                <span class="side-icon">🍵</span>
+                <span class="side-text">茶饮大全</span>
+                <span class="side-arrow">›</span>
+            </div>
+            
+            <div class="side-col" onclick="showPopup2()">
+                <span class="side-icon">🥗</span>
+                <span class="side-text">饮食健康</span>
+                <span class="side-arrow">›</span> 
+            </div>
+            
+            <!--
+            <div class="side-col" onclick="showPopup3()">
+                <span class="side-icon">👤</span>
+                <span class="side-text">人群专区</span>
+                <span class="side-arrow">›</span>
+            </div>
+            -->
+            
+            <div class="side-col" onclick="showPopup4()">
+                <span class="side-icon">💎</span>
+                <span class="side-text">专题专区</span>
+                <span class="side-arrow">›</span>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="carousel">
+                <div class="carousel-item active">
+                    <div class="flower-image">
+                        <img src="images/index1.jpg" alt="春季养生">
+                    </div>
+                    <div class="text-overlay">
+                        <div class="title">春季养生</div>
+                        <div class="subtitle">迎接春日的健康活力</div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <div class="flower-image">
+                        <img src="images/index2.jpg" alt="精选食谱">
+                    </div>
+                    <div class="text-overlay">
+                        <div class="title">精选食谱</div>
+                        <div class="subtitle">每日新鲜滋味</div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <div class="flower-image">
+                        <img src="images/index3.jpg" alt="平衡膳食">
+                    </div>
+                    <div class="text-overlay">
+                        <div class="title">平衡膳食</div>
+                        <div class="subtitle">科学搭配营养全面</div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <div class="flower-image">
+                        <img src="images/index4.jpg" alt="季食材">
+                    </div>
+                    <div class="text-overlay">
+                        <div class="title">当季食材</div>
+                        <div class="subtitle">当令美味，自然馈赠</div>
+                    </div>
+                </div>
+                
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+                
+                <div class="slider-arrow slider-prev">❮</div>
+                <div class="slider-arrow slider-next">❯</div>
+            </div>
+        </div>
+    
+    <div class="columns">
+        <div class="columns-header">
+            <h1 id="today-tea">今日茶饮</h1>
+            <h2 id="classic-tea">经典茶</h2>
+        </div>
+        
+        <div class="menu-columns" id="today-tea-content">
+            <div class="menu-item">
+                <span class="tag tag-new">最新</span>
+                <a href="chayin01.html"><img src="./images/drink/tc1.jpg" alt="白菊花茶"></a>
+                <div class="menu-name">白菊花茶</div>
+            </div>
+            
+            <div class="menu-item">
+                <span class="tag tag-new">最新</span>
+                <a href="chayin13.html">  <img src="./images/drink/ftea5.jpg" alt="西瓜水果茶"></a>
+                <div class="menu-name">西瓜水果茶</div>
+            </div>
+            
+            <div class="menu-item">
+               
+                <a href="chayin14.html">   <img src="./images/drink/summer6.jpg" alt="金银花甘草茶"></a>
+                <div class="menu-name">金银花甘草茶</div>
+            </div>
+            
+            <div class="menu-item">
+                <span class="tag tag-new">最新</span>
+                <a href="chayin15.html">   <img src="./images/drink/tc4.jpg" alt="三七花茶"></a>
+                <div class="menu-name">三七花茶</div>
+            </div>
+            
+            <div class="menu-item">
+                <a href="chayin16.html">  <img src="./images/drink/tc6.jpg" alt="麦冬茶"></a>
+                <div class="menu-name highlight">麦冬茶</div>
+            </div>
+            
+            <div class="menu-item">
+                <a href="chayin17.html">  <img src="./images/drink/summer2.jpg" alt="薏仁茶"></a>
+                <div class="menu-name">薏仁茶</div>
+            </div>
+            
+            <div class="menu-item">
+                <span class="tag tag-new">热门</span>
+                 <a href="chayin04.html"><img src="./images/drink/summer5.jpg" alt="薄荷柠檬茶"></a>
+                <div class="menu-name">薄荷柠檬茶</div>
+            </div>
+            
+            <div class="menu-item">
+                <a href="chayin18.html">   <img src="./images/drink/ftea3.jpg" alt="柠檬水果茶"></a>
+                <div class="menu-name">柠檬水果茶</div>
+            </div>
+        </div>
+
+        <div class="tea-dishes" id="tea-dishes-content">
+            <div class="tea-dish">茉莉花茶</div>
+            <div class="tea-dish">玫瑰红茶</div>
+            <div class="tea-dish">柠檬绿茶</div>
+            <div class="tea-dish">蜂蜜柚子茶</div>
+            <div class="tea-dish">桂圆红枣茶</div>
+            <div class="tea-dish">薄荷柠檬水</div>
+            <div class="tea-dish">水果乌龙茶</div>
+            <div class="tea-dish">奶茶</div>
+            <div class="tea-dish">抹茶拿铁</div>
+            <div class="tea-dish">冰红茶</div>
+            <div class="tea-dish">柠檬红茶</div>
+            <div class="tea-dish">桂花龙井</div>
+            <div class="tea-dish">菊花茶</div>
+            <div class="tea-dish">红茶拿铁</div>
+            <div class="tea-dish">普洱茶</div>
+            <div class="tea-dish">水果茶</div>
+            <div class="tea-dish">花果茶</div>
+            <div class="tea-dish">奶盖茶</div>
+            <div class="tea-dish">珍珠奶茶</div>
+            <div class="tea-dish">绿茶拿铁</div>
+        </div>
+        <!-- 今日茶饮内容结束 -->
+    </div>
+    
+    <div class="blog">
+        <div class="section news-section">
+            <div class="section-title">
+                <h2>饮食新闻</h2>
+                <a href="#" class="view-more">查看更多 >></a>
+            </div>
+            <div class="two-columns">
+                <div class="card">
+                    <img src="images/dietary/dietary3.jpg" alt="示例图片">
+                    <div class="card-content">
+                        <p class="card-text">核桃芝麻糊的做法</p>
+                        <a href="shipu03.html" class="card-button">查看详情</a>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img src="images/dietary/dietary4.jpg" alt="示例图片">
+                    <div class="card-content">
+                        <p class="card-text">南瓜小米粥的做法</p>
+                        <a href="shipu04.html" class="card-button">查看详情</a>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img src="images/info/info19.jpg" alt="示例图片">
+                    <div class="card-content">
+                        <p class="card-text">阳虚体质的饮食调理</p>
+                        <a href="info19.html" class="card-button">查看详情</a>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img src="images/info/info20.jpg" alt="示例图片">
+                    <div class="card-content">
+                        <p class="card-text">孕期饮食注意...</p>
+                        <a href="info20.html" class="card-button">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section research-section">
+            <div class="section-title">
+                <h2>最新</h2>
+                <a href="#" class="view-more">查看更多 >></a>
+            </div>
+            <a href="info01.html"><div class="news-item">
+                <div class="date">
+                    <span class="date-day">14日</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">25年3月</div>
+                    <div class="news-title">胡萝卜六种吃法胜良药</div>
+                </div>
+            </div>
+            <a href="./info02.html"><div class="news-item">
+                <div class="date">
+                    <span class="date-day">14日</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">25年3月</div>
+                    <div class="news-title">8种食物有效缓解失眠...</div>
+                </div>
+            </div></a>
+            <a href="./info03.html"><div class="news-item">
+                <div class="date">
+                    <span class="date-day">10日</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">25年3月</div>
+                    <div class="news-title">汤泡饭危害大揭秘</div>
+                </div>
+            </div></a>
+            <a href="./info04.html"><div class="news-item">
+                <div class="date">
+                    <span class="date-day">4日</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">25年3月</div>
+                    <div class="news-title">秋季梨大推荐</div>
+                </div>
+            </div></a>
+            <a href="./info05.html"><div class="news-item">
+                <div class="date">
+                    <span class="date-day">14日</span>
+                </div>
+                <div class="news-content">
+                    <div class="news-date">25年2月</div>
+                    <div class="news-title">五类人不宜喝豆浆</div>
+                </div>
+            </div></a>
+        </div>
+    </div>
+       <!-- 底部 footer -->
+       <div class="footer"> 
+        <a href="gywm.html">关于我们</a> 
+        <a href="lxwm.html">联系我们</a> 
+        <a href="privacy.html">隐私政策</a> 
+        <a href="terms.html">使用条款</a> 
+        <a href="ditu.html">网站地图</a> 
+        <a href="liuyan.html">留言</a>
+    </div> 
+     <!-- 友情链接 -->
+    <div class="footer-links">
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+       
+    </div>
+    <!-- 版权声明 -->
+    <div class="copyright">
+      本网站所有信息未经授权禁止转载、摘编、复制及建立镜像，违者将依法追究法律责任。
+    <br>
+      违法和不良信息举报电话：400-123-4567 举报邮箱：jubao@example.com
+    <br>
+    &copy;Copyright 2025 - 2026 饮食之道 All Rights Reserved.
+    <br>粤ICP备2025410119号-1
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTopBtn">
+        <img src="images/胡萝卜-Carrot.png" alt="返回顶部">
+    </button>
+<script src="js/index.js"></script>
+</body>
+</html>

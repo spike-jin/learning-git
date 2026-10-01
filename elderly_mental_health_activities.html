@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老年人心理健康活动</title>
+    <!-- 新增元描述标签，提升 SEO -->
+    <meta name="description" content="了解老年人心理健康活动，促进老年人心理健康，提升生活质量。">
+
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            background-color: #2c3e50;
+            box-shadow: 0 2px 10px rgba(190, 189, 189, 0.1);
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fffefe;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            padding-right: 7%;
+        }
+
+        .contact {
+            margin-right: 20px;
+            font-size: 14px;
+        }
+
+        .contact a {
+            text-decoration: none;
+            color: #fdfcfc;
+            margin: 0 10px;
+        }
+
+        .contact a:hover {
+            color: #ff6a00;
+        }
+
+        .button-group {
+            display: flex;
+        }
+
+        .login-btn {
+            margin-right: 15px;
+            padding: 8px 20px;
+            background-color: transparent;
+            border: 1px solid #ff6a00;
+            color: #ff6a00;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-btn:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
+
+        .register-btn {
+            padding: 8px 20px;
+            background-color: #ff6a00;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .register-btn:hover {
+            background-color: #e65c00;
+        }
+
+        .main-nav {
+            background-color: #f8f8f8;
+            padding: 0px 50px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-icon {
+            width: 70px;
+            height: 70px;
+            padding-left: 11%;
+        }
+
+        .nav-icon img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding-right: 7%;
+
+        }
+
+        .menu-toggle {
+            display: none
+        }
+
+        .nav-menu li {
+            margin: 0 30px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #ff6a00;
+        }
+
+        .nav-menu a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6a00;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        @media (max-width: 1200px) {
+            .nav-menu li {
+                margin: 0 20px;
+            }
+        }
+
+        @media (max-width: 1020px) {
+            .nav-menu li {
+                margin: 0 10px;
+            }
+        }
+
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 870px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .nav-icon {
+                display: none
+            }
+
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                margin: 0 30px;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 20px 0;
+                background-color: #f8f8f8;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 0 15px;
+            }
+        }
+
+        /* 老年人心理健康活动样式 */
+        .mental-health-title {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .mental-health-section {
+            margin-bottom: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mental-health-subtitle {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .mental-health-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .activity-list {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .activity-list li {
+            margin-bottom: 5px;
+        }
+
+        .activity-list li:hover {
+            color: #ff6a00;
+            transition: color 0.3s ease;
+        }
+
+        /* 设置链接点击前和点击后的颜色 */
+        .content a:link {
+            color: #6C757D;/* 点击前颜色 */
+        }
+
+        .content a:visited {
+            color: #434a50; /* 点击后颜色 */
+        }
+
+        /* 底部 footer */
+        .footer {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-links {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 5px 0;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: rgb(22, 22, 22);
+        }
+
+        .footer-links a:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+            color: #666;
+        }
+
+        /* 版权声明区域样式 */
+        .copyright {
+            background-color: #f4f4f4;
+            padding: 8px 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* 返回顶部按钮 */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        #backToTopBtn.show {
+            opacity: 1;
+        }
+
+        #backToTopBtn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+         @media (max-width: 768px) {
+            header {
+                padding: 0 50px 0 20px;
+            }
+             .logo {
+            padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                margin-left: 45px;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            .services {
+                display: none;
+            }
+
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+                padding-right: 50px;
+            }
+            .hamburger {
+                padding: 0;
+    
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .contact a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            
+            .nav-icon {
+                padding-left: 5%;
+            }
+            
+            .nav-menu {
+                padding: 10px 0;
+            }
+            .logo-text {
+            font-size: 19px;
+            }
+        }
+         @media (max-width: 390px) {
+            .logo-text {
+            font-size: 16px;
+
+        }
+         }
+    </style>
+</head>
+<body>
+    <!--头部-->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+
+                <span class="logo-text">饮食之道</span>
+            </a>
+        </div>
+       <div class="header-right">
+             <div class="button-group">
+                <a href="login-register.html?action=signin" class="login-btn">登录</a>
+                <a href="login-register.html?action=register" class="register-btn">注册</a>
+            </div>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+             
+        
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-icon">
+                <img src="images/logo.png" alt="饮食之道">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="dietary.html">食疗养生</a></li>
+                <li><a href="drink.html">养生茶饮</a></li>
+                <li><a href="newest.html" class="active">养生社区</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- 老年人心理健康活动内容 -->
+    <div class="content">
+        <h1 class="mental-health-title">老年人心理健康活动</h1>
+        <p><a href="aged.html">点击此处查看更多老年人相关信息</a></p>
+
+        <div class="mental-health-section">
+            <h2 class="mental-health-subtitle">老年人心理健康的重要性</h2>
+            <p class="mental-health-text">随着年龄的增长，老年人的身体机能逐渐衰退，生活环境也可能发生变化，这些都可能对他们的心理健康产生影响。良好的心理健康状态有助于老年人保持积极乐观的生活态度，增强免疫力，提高生活质量，预防老年痴呆等疾病的发生。因此，关注老年人的心理健康至关重要。</p>
+        </div>
+
+        <div class="mental-health-section">
+            <h2 class="mental-health-subtitle">常见的老年人心理健康问题</h2>
+            <ul class="activity-list">
+                <li><strong>孤独感</strong>：子女工作繁忙，陪伴时间减少，老年人容易感到孤独和寂寞。</li>
+                <li><strong>焦虑和抑郁</strong>：对身体健康的担忧、生活中的变故等都可能导致老年人出现焦虑和抑郁情绪。</li>
+                <li><strong>认知障碍</strong>：随着年龄增长，部分老年人可能出现记忆力减退、认知能力下降等问题。</li>
+            </ul>
+        </div>
+
+        <div class="mental-health-section">
+            <h2 class="mental-health-subtitle">促进老年人心理健康的活动</h2>
+
+            <h3 class="mental-health-subtitle">文化艺术活动</h3>
+            <ul class="activity-list">
+                <li><strong>书法绘画</strong>：组织老年人参加书法、绘画培训班或比赛，让他们发挥自己的创造力，表达内心的情感。</li>
+                <li><strong>音乐欣赏</strong>：举办音乐欣赏会，播放老年人喜欢的经典音乐，让他们在音乐中放松身心。</li>
+                <li><strong>手工制作</strong>：如编织、剪纸、陶艺等，不仅能锻炼老年人的动手能力，还能让他们获得成就感。</li>
+            </ul>
+
+            <h3 class="mental-health-subtitle">社交互动活动</h3>
+            <ul class="activity-list">
+                <li><strong>老年俱乐部</strong>：成立各种兴趣小组，如摄影俱乐部、钓鱼俱乐部等，让老年人结识志同道合的朋友。</li>
+                <li><strong>社区聚会</strong>：定期举办社区聚会，如节日庆祝活动、生日会等，增强老年人之间的交流和互动。</li>
+                <li><strong>志愿者活动</strong>：鼓励老年人参与志愿者活动，如社区服务、关爱儿童等，让他们感受到自己的价值。</li>
+            </ul>
+
+            <h3 class="mental-health-subtitle">知识讲座和培训</h3>
+            <ul class="activity-list">
+                <li><strong>心理健康讲座</strong>：邀请专业的心理咨询师为老年人讲解心理健康知识，提供心理调适方法。</li>
+                <li><strong>健康养生讲座</strong>：介绍常见疾病的预防和治疗方法，提高老年人的健康意识。</li>
+                <li><strong>智能手机培训</strong>：帮助老年人学习使用智能手机，让他们能够更好地与家人和朋友沟通，了解外界信息。</li>
+            </ul>
+        </div>
+
+        <div class="mental-health-section">
+            <h2 class="mental-health-subtitle">家庭在老年人心理健康中的作用</h2>
+            <p class="mental-health-text">家庭是老年人最重要的支持系统，家人的关心和陪伴对老年人的心理健康起着关键作用。</p>
+            <ul class="activity-list">
+                <li><strong>多陪伴</strong>：子女应尽量抽出时间陪伴老年人，倾听他们的心声，关心他们的生活。</li>
+                <li><strong>尊重和理解</strong>：尊重老年人的意见和选择，理解他们的感受和需求。</li>
+                <li><strong>鼓励参与</strong>：鼓励老年人参与家庭活动，让他们感受到自己是家庭的重要一员。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 底部 footer -->
+    <div class="footer">
+        <a href="gywm.html">关于我们</a>
+        <a href="lxwm.html">联系我们</a>
+        <a href="privacy.html">隐私政策</a>
+        <a href="terms.html">使用条款</a>
+        <a href="ditu.html">网站地图</a>
+        <a href="liuyan.html">留言</a>
+    </div>
+    <!-- 友情链接 -->
+    <div class="footer-links">
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+    </div>
+    <!-- 版权声明 -->
+    <div class="copyright">
+        本网站所有信息未经授权禁止转载、摘编、复制及建立镜像，违者将依法追究法律责任。
+        <br>
+        违法和不良信息举报电话：400 - 123 - 4567 举报邮箱：jubao@example.com
+        <br>
+        &copy;Copyright 2025 - 2026 饮食之道 All Rights Reserved.
+        <br>粤ICP备2025410119号-1
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTopBtn">
+        <img src="images/胡萝卜-Carrot.png" alt="返回顶部">
+    </button>
+    <script>
+        // 返回顶部功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 修正汉堡菜单功能的选择器
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

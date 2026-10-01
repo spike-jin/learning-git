@@ -1,0 +1,115 @@
+.main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 200px); /* 根据头部和底部高度调整 */
+            background: linear-gradient(135deg, #f0f2f5, #e4e6eb); /* 添加渐变背景 */
+            padding: 40px 0;
+        }
+
+        .right-main {
+            width: 100%;
+            max-width: 800px; /* 限制表单最大宽度 */
+        }
+
+        /* 留言中心样式优化 */
+        .message-center {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .message-center:hover {
+            transform: translateY(-5px);
+        }
+
+        .message-center h2 {
+            color: #ff6a00;
+            font-size: 32px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .message-center h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #ff6a00;
+        }
+
+        /* 表单容器样式优化 */
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 表单项样式优化 */
+        .form-group {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group label {
+            width: 120px;
+            text-align: right;
+            margin-right: 20px;
+            color: #555555;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .form-control {
+            flex: 1;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #ff6a00;
+            box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.2);
+        }
+
+        .message-textarea {
+            height: 180px;
+            resize: vertical;
+        }
+
+        /* 提交按钮样式优化 */
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #ff6a00;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #e65c00;
+            transform: translateY(-2px);
+        }

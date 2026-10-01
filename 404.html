@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 星际迷航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #000;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* 背景 */
+        .space {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 20% 30%, 
+                    rgba(25, 100, 255, 0.3) 10%,
+                    transparent 30%),
+                radial-gradient(circle at 80% 70%, 
+                    rgba(255, 50, 150, 0.3) 10%,
+                    transparent 30%);
+            animation: colorShift 15s infinite alternate;
+        }
+
+        /* 颜色变化动画 */
+        @keyframes colorShift {
+            0% { background-color: #0a043c; }
+            50% { background-color: #1a1a2e; }
+            100% { background-color: #16213e; }
+        }
+
+      
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite;
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: inset -20px -20px 40px rgba(0,0,0,0.5);
+        }
+
+        .spaceship {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background: #555;
+            border-radius: 10px;
+            animation: float 6s ease-in-out infinite;
+        }
+        .spaceship::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ff4444;
+            clip-path: polygon(100% 50%, 0 0, 0 100%);
+            right: -20px;
+            top: 5px;
+        }
+
+        /* 404文字 */
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            padding-top: 20vh;
+        }
+        h1 {
+            font-size: 10rem;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+        p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* 动画 */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            50% { text-shadow: 0 0 40px rgba(255,255,255,0.8); }
+        }
+
+       
+        .stars {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="space">
+        <div class="stars">
+           
+        </div>
+        <div class="planet" style="
+            width: 200px;
+            height: 200px;
+            top: 50px;
+            left: 20%;
+            background: linear-gradient(45deg, #3a1c71, #d76d77, #ffaf7b);
+        "></div>
+        <div class="spaceship" style="top: 60%; left: 70%"></div>
+    </div>
+
+    <div class="content">
+        <h1>404</h1>
+        <p>哦不！我们似乎迷失在太空了...</p>
+        <p>这个星系暂时无法到达</p>
+        <a href="index.html" class="btn">返回基地</a>
+        <a href="ditu.html" class="btn">查看地图</a>
+    </div>
+
+    <script>
+        // 生成随机星星
+        const stars = document.querySelector('.stars');
+        for(let i=0; i<200; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 1.5 + 's';
+            stars.appendChild(star);
+        }
+
+        // 生成流星
+        function createMeteor(){
+            const meteor = document.createElement('div');
+            meteor.style.cssText = `
+                position: fixed;
+                width: 100px;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, white);
+                transform: rotate(-45deg);
+                animation: meteor 1s linear;
+                top: ${Math.random() * 100}vh;
+                left: ${Math.random() * 100}vw;
+            `;
+            document.body.appendChild(meteor);
+            setTimeout(() => meteor.remove(), 1000);
+        }
+        setInterval(createMeteor, 3000);
+
+        // 添加流星动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes meteor {
+                from { transform: rotate(-45deg) translateX(-100%); }
+                to { transform: rotate(-45deg) translateX(100vw); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

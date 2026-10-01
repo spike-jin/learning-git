@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI计算</title>
+    
+    <style>
+    /*热量计算器*/
+    .breadcrumb {
+        display: flex;
+        gap: 12px;
+        margin: 0px 0 0 5.5%;
+        font: 14px/1.5 'Microsoft Yahei';
+        color: #666;
+        list-style: none;
+        transform: translateX(-30px);
+    }
+    
+    .breadcrumb a {
+        color:#ff8b33;
+        text-decoration: none; /* 移除默认下划线 */
+        transition: all 0.3s ease;
+    }
+    
+    .breadcrumb a:hover {
+        color: #ff8b33;
+        text-decoration: underline; /* 悬停时显示下划线 */
+        text-underline-offset: 3px;
+    }
+    
+    .breadcrumb li:not(:last-child)::after {
+        content: '/';
+        margin-left: 12px;
+        color: currentColor;
+    }
+    
+    .active {
+        color: #2c2928;
+        cursor: default;
+    }
+    
+        @keyframes underline {
+             from { width: 0 }
+              to { width: 100% }
+         }
+        .introduction-box{
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            padding: 50px;
+        }
+       .calculator input[type="number"] {
+            width: 100%;
+             padding: 8px;
+            box-sizing: border-box;
+            margin: 18px 0; 
+        }
+        .calculator {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 30px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            width: 30%; 
+            text-align: center;
+            margin: 0 auto; 
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 45%; 
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            margin: 18px auto 0; 
+            display: block; 
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f4e9;
+            border-left: 5px solid #66bb6a;
+            text-align: center;
+        }
+        .result {
+             transition: opacity 0.3s ease;
+         }
+
+    </style>
+</head>
+<body>
+
+
+    <!-- 主内容 -->
+    <main class="container-BMI">
+        <div class="introduction-box">
+            <div class="content-BMI">
+                <h2>BMI计算器</h2>
+                <div class="calculator">
+                    <input type="number" id="weight" placeholder="体重 (kg)" required>
+                    <input type="number" id="height" step="1" placeholder="身高 (cm)" required>
+                    <button type="button" onclick="calculateBMI()">计算BMI</button>
+                    <div class="result" id="result"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 计算器功能
+        function calculateBMI() {
+        const weight = parseFloat(document.getElementById('weight').value);
+        const cm = parseFloat(document.getElementById('height').value); // 获取厘米值
+        let resultText;
+
+        if (isNaN(weight) || isNaN(cm) || cm <= 0) {
+            resultText = '请输入有效的体重和身高';
+        } else {
+            const height = cm / 100; // 转换为米
+            const bmi = weight / (height * height);
+
+            if (bmi < 18.5) {
+                resultText = `BMI: ${bmi.toFixed(1)}（偏瘦）`;
+            } else if (bmi < 24) {
+                resultText = `BMI: ${bmi.toFixed(1)}（正常）`; 
+            } else if (bmi < 28) {
+                resultText = `BMI: ${bmi.toFixed(1)}（超重）`;
+            } else {
+                resultText = `BMI: ${bmi.toFixed(1)}（肥胖）`;
+            }
+        }
+
+        document.getElementById('result').textContent = resultText;
+    }
+    </script>
+</body>
+</html>

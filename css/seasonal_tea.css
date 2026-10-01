@@ -1,0 +1,169 @@
+ .tabs {
+            display: flex;
+            background-color: #4a5464;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px 0;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .tab.active {
+            background-color: #1e73be;
+            font-weight: bold;
+        }
+        
+        .content {
+            background-color: #f0f0f0;
+            padding: 20px;
+            min-height: 500px;
+        }
+        
+        h1 {
+            color: #1e73be;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+.summer-tea-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding:0 20px;
+
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .tea-item {
+        margin-bottom: 40px;
+        margin-left: 10%;
+        margin-right: 10%;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .tea-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #e8420a;
+        margin-left: 40px;
+    }
+
+    .tea-content {
+        display: flex;
+        gap: 20px;
+    }
+
+    .tea-image-container {
+        display: flex;
+        align-items: center; /* 垂直居中 */
+        width: 300px;
+    }
+
+    .tea-image {
+        max-width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .tea-description {
+        flex: 1;
+    }
+
+    .tea-description h3 {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .tea-description ul, .tea-description ol {
+        padding-left: 20px;
+    }
+
+    .tea-description p {
+        line-height: 1.6;
+        color: #666;
+    }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            width: 86%;
+        }
+      
+        .header-container a {
+            text-emphasis: none;
+            text-decoration: none;
+            color: #333;   
+        }
+        .header-container a h3 {
+            background-color: #333;
+            color: #333;
+            transition: color 0.3s;    
+        }
+
+        .header-container a:hover {
+            color: #333;
+        }
+
+        .header-container a h3 {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .header-container .STYLE20 {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        .header-container .STYLE20 {
+            margin-left: auto;
+        }
+                @media (max-width: 768px) {
+
+            .tea-content {
+                flex-direction: column;
+            }
+             .tea-image-container {
+                width: 100%;
+                justify-content: center;
+            }
+            .tea-image {
+                width: 100%;
+                height: auto;
+            }
+        }

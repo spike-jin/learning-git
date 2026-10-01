@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶文化</title>
+    <style>
+        main.container {
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .tea-culture-intro, .tea-history, .tea-types, .tea-ceremony {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tea-culture-intro:hover, .tea-history:hover, .tea-types:hover, .tea-ceremony:hover {
+            transform: translateY(-5px);
+        }
+
+        .tea-culture-intro h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .tea-culture-intro p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .tea-history h2, .tea-types h2, .tea-ceremony h2 {
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e8420a;
+            padding-bottom: 10px;
+        }
+
+        .history-item h3 {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .history-item p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .type-item {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease;
+        }
+
+        .type-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .type-item img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .type-item h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .type-item p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .tea-ceremony p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            float: right;
+            padding-right: 5px;
+            transform: translateY(20px);
+        }
+        .header-container a {
+            text-emphasis: none;
+            text-decoration: none;
+            color: #333;   
+        }
+        .header-container a h3 {
+            background-color: #333;
+            color: #333;
+            transition: color 0.3s;    
+        }
+
+        .header-container a:hover {
+            color: #333;
+        }
+
+        .header-container a h3 {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .header-container .STYLE20 {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+    @media (max-width: 768px) {
+        .type-item {
+            flex-direction: column;
+        }
+        
+        .type-item img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    /* 为图片添加响应式设计 */
+    .type-item img {
+        width: 100%;
+        height: auto;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- 主内容 -->
+    <main class="container">
+        <!-- 茶文化介绍部分 -->
+        <div class="tea-culture-intro">
+            <h1>茶文化的魅力</h1>
+            <p>茶文化，作为中华民族传统文化的重要组成部分，源远流长，博大精深。它融合了哲学、宗教、艺术等多方面的元素，不仅是一种饮品文化，更是一种生活方式和精神追求。</p>
+            <div class="header-container">
+                <span class="STYLE20">您的位置&gt;
+                    <a href="index.html">首页</a>&gt;
+                    <a href="drink.html">养生茶饮</a>&gt;茶文化
+                </span>
+            </div>
+        </div>
+        <!-- 茶文化历史部分 -->
+        <div class="tea-history">
+            <h2>茶文化的历史变迁</h2>
+            <div class="history-item">
+                <h3>古代起源</h3>
+                <p>中国是茶的故乡，茶文化起源于上古时期。相传神农尝百草，日遇七十二毒，得茶而解之。这是关于茶的最早记载，表明茶最初是以药用价值被人们认识的。</p>
+            </div>
+
+            <div class="history-item">
+                <h3>唐宋繁荣</h3>
+                <p>唐宋时期是茶文化的鼎盛阶段。唐代陆羽著《茶经》，系统地阐述了茶的起源、种植、采摘、制作、饮用等方面的知识，将饮茶提升到了文化的高度。宋代的点茶技艺更是达到了登峰造极的地步，与禅宗结合，发展出“茶禅一味”的养生哲学。</p>
+            </div>
+
+            <div class="history-item">
+                <h3>明清传承</h3>
+                <p>明清时期，散茶冲泡逐渐流行，茶具的制作也达到了很高的水平。紫砂壶的出现，更是为茶文化增添了独特的魅力。茶文化在这一时期进一步传播和发展，影响到了周边国家和地区。</p>
+            </div>
+        </div>
+
+        <!-- 茶的种类部分 -->
+        <div class="tea-types">
+            <h2>茶的种类</h2>
+            <div class="type-item">
+                <img src="./images/drink/culture1.jpg" alt="绿茶">
+                <h3>绿茶</h3>
+                <p>绿茶作为一种不发酵茶，最大程度地保留了鲜叶的天然物质。其中，茶多酚能有效抗氧化，清除体内自由基，帮助延缓衰老；
+                   儿茶素则具有抗菌消炎的作用，对预防感冒等疾病有一定帮助。叶绿素不仅让绿茶拥有清新色泽，还能促进新陈代谢。
+                   咖啡碱能刺激中枢神经，提神醒脑。常饮绿茶，可提神清心、清热解暑、消食化痰，还能降低心血管疾病的发生风险。
+                   像闻名遐迩的西湖龙井，其外形扁平光滑，香气清高持久；碧螺春卷曲如螺，银绿隐翠，清香幽雅；信阳毛尖细圆紧直，
+                   汤色嫩绿明亮，都是绿茶中的佳品。</p>
+            </div>
+
+            <div class="type-item">
+                <img src="./images/drink/culture2.jpg" alt="红茶">
+                <h3>红茶</h3>
+                <p>红茶属于全发酵茶，要历经萎凋、揉捻、发酵、干燥等多道严谨工序。在发酵过程中，茶叶中的茶多酚发生氧化反应，
+                   形成了红茶特有的红汤红叶。其汤色红亮诱人，香气浓郁高长，滋味醇厚回甘。饮用红茶，不仅能温暖肠胃，促进消化，
+                   帮助人们在饭后更好地吸收营养，还能提神益思，让大脑保持清醒状态。在寒冷的冬日，来一杯热气腾腾的红茶，
+                   身心都能得到慰藉。祁门红茶具有独特的“祁门香”，正山小种带有松烟香，滇红则以香高味浓著称，都是红茶中的经典代表。</p>
+            </div>
+
+            <div class="type-item">
+                <img src="./images/drink/culture3.jpg" alt="乌龙茶">
+                <h3>乌龙茶</h3>
+                <p>乌龙茶作为半发酵茶，巧妙融合了绿茶的清香与红茶的醇厚，形成了独特的风味。它的制作工艺复杂，摇青让茶叶边缘轻微发酵，
+                   杀青则终止发酵进程，揉捻和烘焙进一步塑造茶叶的外形与口感。长期饮用乌龙茶，具有诸多益处。美容养颜方面，
+                   能促进皮肤新陈代谢，保持肌肤弹性；减肥降脂上，可帮助分解脂肪，降低血液中的胆固醇含量；还能提神醒脑，提高工作和
+                   学习效率。铁观音音韵独特，大红袍岩韵十足，凤凰单枞香型丰富，都是乌龙茶中的杰出代表。</p>
+            </div>
+        </div>
+
+        <!-- 茶道礼仪部分 -->
+        <div class="tea-ceremony">
+            <h2>茶道礼仪</h2>
+            <p>茶道礼仪是茶文化的重要组成部分，它体现了中华民族的传统美德和审美情趣。在茶道中，从茶具的选择、茶叶的冲泡到品茶的姿势，都有严格的规范和要求。例如，主人在泡茶时要动作优雅、态度恭敬，客人在品茶时要细细品味、表达赞赏。</p>
+        </div>
+
+    </main>
+
+
+
+    <script>
+        // 返回顶部功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+         // 汉堡菜单功能
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冬季老年人常见疾病预防</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            background-color: #2c3e50;
+            box-shadow: 0 2px 10px rgba(190, 189, 189, 0.1);
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fffefe;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            padding-right: 7%;
+        }
+
+        .contact {
+            margin-right: 20px;
+            font-size: 14px;
+        }
+
+        .contact a {
+            text-decoration: none;
+            color: #fdfcfc;
+            margin: 0 10px;
+        }
+
+        .contact a:hover {
+            color: #ff6a00;
+        }
+
+        .button-group {
+            display: flex;
+        }
+
+        .login-btn {
+            margin-right: 15px;
+            padding: 8px 20px;
+            background-color: transparent;
+            border: 1px solid #ff6a00;
+            color: #ff6a00;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-btn:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
+
+        .register-btn {
+            padding: 8px 20px;
+            background-color: #ff6a00;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .register-btn:hover {
+            background-color: #e65c00;
+        }
+
+        .main-nav {
+            background-color: #f8f8f8;
+            padding: 0px 50px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-icon {
+            width: 70px;
+            height: 70px;
+            padding-left: 11%;
+        }
+
+        .nav-icon img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding-right: 7%;
+
+        }
+
+        .menu-toggle {
+            display: none
+        }
+
+        .nav-menu li {
+            margin: 0 30px;
+        }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #ff6a00;
+        }
+
+        .nav-menu a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6a00;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        @media (max-width: 1200px) {
+            .nav-menu li {
+                margin: 0 20px;
+            }
+        }
+
+        @media (max-width: 1020px) {
+            .nav-menu li {
+                margin: 0 10px;
+            }
+        }
+
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 870px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .nav-icon {
+                display: none
+            }
+
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                margin: 0 30px;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 20px 0;
+                background-color: #f8f8f8;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 0 15px;
+            }
+        }
+
+        /* 冬季老年人常见疾病预防样式 */
+        .disease-title {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .disease-section {
+            margin-bottom: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .disease-subtitle {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .disease-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .disease-list {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .disease-list li {
+            margin-bottom: 5px;
+        }
+
+        .disease-list li:hover {
+            color: #ff6a00;
+            transition: color 0.3s ease;
+        }
+
+        /* 设置链接点击前和点击后的颜色 */
+        .content a:link {
+            color: #6C757D;/* 点击前颜色 */
+        }
+
+        .content a:visited {
+            color: #434a50; /* 点击后颜色 */
+        }
+
+        /* 底部 footer */
+        .footer {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-links {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 5px 0;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: rgb(22, 22, 22);
+        }
+
+        .footer-links a:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+            color: #666;
+        }
+
+        /* 版权声明区域样式 */
+        .copyright {
+            background-color: #f4f4f4;
+            padding: 8px 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* 返回顶部按钮 */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        #backToTopBtn.show {
+            opacity: 1;
+        }
+
+        #backToTopBtn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+         @media (max-width: 768px) {
+            header {
+                padding: 0 50px 0 20px;
+            }
+             .logo {
+            padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                margin-left: 45px;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            .services {
+                display: none;
+            }
+
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+                padding-right: 50px;
+            }
+            .hamburger {
+                padding: 0;
+    
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .contact a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            
+            .nav-icon {
+                padding-left: 5%;
+            }
+            
+            .nav-menu {
+                padding: 10px 0;
+            }
+            .logo-text {
+            font-size: 19px;
+            }
+        }
+         @media (max-width: 390px) {
+            .logo-text {
+            font-size: 16px;
+
+        }
+         }
+    </style>
+</head>
+<body>
+    <!--头部-->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+
+                <span class="logo-text">饮食之道</span>
+            </a>
+        </div>
+       <div class="header-right">
+             <div class="button-group">
+                <a href="login-register.html?action=signin" class="login-btn">登录</a>
+                <a href="login-register.html?action=register" class="register-btn">注册</a>
+            </div>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+             
+        
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-icon">
+                <img src="images/logo.png" alt="饮食之道">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="dietary.html">食疗养生</a></li>
+                <li><a href="drink.html">养生茶饮</a></li>
+                <li><a href="newest.html" class="active">养生社区</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- 冬季老年人常见疾病预防内容 -->
+    <div class="content">
+        <h1 class="disease-title">冬季老年人常见疾病预防</h1>
+        <p><a href="aged.html">点击此处查看更多老年人相关信息</a></p>
+
+        <div class="disease-section">
+            <h2 class="disease-subtitle">心脑血管疾病</h2>
+            <p class="disease-text">冬季是心脑血管疾病的高发季节，寒冷刺激会使血管收缩，血压升高，增加心脏负担，容易诱发心肌梗死、脑卒中等疾病。</p>
+            <ul class="disease-list">
+                <li><strong>保暖防寒</strong>：及时增添衣物，注意头部、颈部、手部等部位的保暖，避免寒冷刺激。</li>
+                <li><strong>规律服药</strong>：患有高血压、高血脂、冠心病等疾病的老年人，要严格按照医嘱规律服药，控制病情。</li>
+                <li><strong>适度运动</strong>：选择在阳光充足、气温相对较高的时段进行适度运动，如散步、太极拳等，避免剧烈运动。</li>
+                <li><strong>合理饮食</strong>：减少高脂肪、高胆固醇、高盐食物的摄入，多吃新鲜蔬菜水果，保持大便通畅。</li>
+            </ul>
+        </div>
+
+        <div class="disease-section">
+            <h2 class="disease-subtitle">呼吸系统疾病</h2>
+            <p class="disease-text">冬季气温低，空气干燥，呼吸道黏膜抵抗力下降，容易引发感冒、流感、肺炎等呼吸系统疾病。</p>
+            <ul class="disease-list">
+                <li><strong>接种疫苗</strong>：老年人可以在秋季接种流感疫苗和肺炎疫苗，有效预防流感和肺炎的发生。</li>
+                <li><strong>保持室内通风</strong>：定期开窗通风，保持室内空气新鲜，减少细菌和病毒的滋生。</li>
+                <li><strong>避免前往人员密集场所</strong>：冬季人员密集场所空气流通不畅，容易传播呼吸道疾病，老年人应尽量避免前往。</li>
+                <li><strong>注意个人卫生</strong>：勤洗手，咳嗽或打喷嚏时用纸巾捂住口鼻，避免飞沫传播。</li>
+            </ul>
+        </div>
+
+        <div class="disease-section">
+            <h2 class="disease-subtitle">关节疾病</h2>
+            <p class="disease-text">冬季寒冷潮湿的天气会使关节周围的血管收缩，血液循环不畅，加重关节疼痛和僵硬，容易诱发关节炎等关节疾病。</p>
+            <ul class="disease-list">
+                <li><strong>关节保暖</strong>：佩戴护膝、护腕等保暖用品，避免关节受凉。</li>
+                <li><strong>适当运动</strong>：进行一些关节活动度训练和肌肉力量训练，如关节屈伸、散步等，增强关节的稳定性。</li>
+                <li><strong>物理治疗</strong>：可以采用热敷、按摩等物理治疗方法，促进关节血液循环，缓解疼痛。</li>
+                <li><strong>补充营养</strong>：适当补充钙剂、维生素 D 等营养素，增强骨骼强度。</li>
+            </ul>
+        </div>
+
+        <div class="disease-section">
+            <h2 class="disease-subtitle">消化系统疾病</h2>
+            <p class="disease-text">冬季人们往往会进食更多高热量、高脂肪的食物，再加上寒冷刺激，容易引起胃肠道功能紊乱，诱发胃炎、胃溃疡、消化不良等消化系统疾病。</p>
+            <ul class="disease-list">
+                <li><strong>规律饮食</strong>：定时定量进食，避免暴饮暴食，少吃辛辣、油腻、刺激性食物。</li>
+                <li><strong>注意饮食卫生</strong>：不吃生冷食物，避免食用变质食物，防止食物中毒和肠道感染。</li>
+                <li><strong>腹部保暖</strong>：注意腹部保暖，避免着凉，可以使用热水袋热敷腹部。</li>
+                <li><strong>保持心情舒畅</strong>：情绪紧张、焦虑会影响胃肠道的正常功能，老年人要保持心情舒畅，避免精神压力过大。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 底部 footer -->
+    <div class="footer">
+        <a href="gywm.html">关于我们</a>
+        <a href="lxwm.html">联系我们</a>
+        <a href="privacy.html">隐私政策</a>
+        <a href="terms.html">使用条款</a>
+        <a href="ditu.html">网站地图</a>
+        <a href="liuyan.html">留言</a>
+    </div>
+    <!-- 友情链接 -->
+    <div class="footer-links">
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+    </div>
+    <!-- 版权声明 -->
+    <div class="copyright">
+        本网站所有信息未经授权禁止转载、摘编、复制及建立镜像，违者将依法追究法律责任。
+        <br>
+        违法和不良信息举报电话：400 - 123 - 4567 举报邮箱：jubao@example.com
+        <br>
+        &copy;Copyright 2025 - 2026 饮食之道 All Rights Reserved.
+        <br>粤ICP备2025410119号-1
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTopBtn">
+        <img src="images/胡萝卜-Carrot.png" alt="返回顶部">
+    </button>
+    <script>
+        // 返回顶部功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 汉堡菜单功能存在问题，修正选择器
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

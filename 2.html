@@ -1,0 +1,266 @@
+from .models import *
+from django.shortcuts import render, get_object_or_404
+import random
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+from django.contrib.auth.decorators import login_required
+from django.db.models import F
+def index(request):
+
+    today_teas = Tea.objects.all()
+    
+    
+     # 获取最新的 DietaryInfo 和 News
+    latest_dietary = DietaryInfo.objects.all().order_by('-created_at')[:5]  # 获取最近5篇 DietaryInfo
+    latest_news = News.objects.all().order_by('-date')[:5]  # 获取最近5篇 News
+
+    # 将这两篇文章放在一个列表中
+    latest_articles = list(latest_dietary) + list(latest_news)
+
+    # 从这个列表中随机选择4篇文章
+    random_articles = random.sample(latest_articles, 4)
+
+
+
+    latest_news = News.objects.order_by('-date')[:5]
+    return render(request, 'index.html', { 'today_teas': today_teas, 'dietary_infos': random_articles, 'latest_news': latest_news})
+
+def crowd(request):
+    return render(request, 'crowd.html')
+
+def dietary(request):
+    recipes = DietaryInfo.objects.all().order_by('-created_at')[:8]
+    return render(request, 'dietary.html', {'recipes': recipes})
+
+def drink(request):
+
+    carousel_items = [
+            {
+                'title': '养生茶推荐',
+                'description': '精选优质中药材，四季养生必备',
+                'image': 'images/index1.jpg',
+                'link': '#'
+            },
+            {
+                'title': '节气特饮',
+                'description': '根据二十四节气调配的养生茶饮',
+                'image': 'https://img.picui.cn/free/2025/06/11/6849838b1a1cc.jpg',
+                'link': '#'
+            }]
+
+
+    categories = [
+        {'name': '养生茶', 'image': 'images/category1.jpg', 'description': '健康养生', 'slug': 'health_tea'},
+        {'name': '中草药奶茶', 'image': 'images/category2.jpg', 'description': '草药新饮', 'slug': 'herbal_tea'},
+        {'name': '节气茶饮', 'image': 'images/category3.jpg', 'description': '四季养生', 'slug': 'seasonal_tea'},
+        {'name': '茶文化', 'image': 'images/category4.jpg', 'description': '文化之韵', 'slug': 'tea_culture'}
+    ]
+
+    hot_products = [
+        # slug是地址后缀，填写chrysanthemum-tea则实际访问为www.yszd6.com/drink/chrysanthemum-tea
+        {
+            'name': '菊花茶',
+            'image_url': 'images/drink/tea1.jpg',
+            'slug': 'chrysanthemum-tea',
+            'description': '清肝明目、缓解眼疲劳'
+        },
+        {
+            'name': '山楂茶',
+            'image_url': 'images/drink/tea5.jpg',
+            'slug': 'hawthorn-tea',
+            'description': '帮助消食、降脂减肥'
+        },
+        {
+            'name': '红枣茶',
+            'image_url': 'images/drink/tea3.jpg',
+            'slug': 'jujube-tea',
+            'description': '补气养血、改善体虚'
+        }
+    ]
+    # 分类推荐数据
+    recommendations = {
+        'qinggan_mingmu': [  # 清肝明目推荐
+            hot_products[0]  # 菊花茶
+        ],
+        'jianfei_jiangzhi': [  # 减肥降脂推荐
+            hot_products[1]  # 山楂茶
+        ],
+        'buqi_yangxue': [  # 补气养血推荐
+            hot_products[2]  # 红枣茶
+        ]
+    }
+
+    context = {
+        'carousel_items': carousel_items,
+        'categories': categories,
+        'recommendations': recommendations
+    }
+
+    return render(request, 'drink.html', context)
+
+
+def season(request):
+    return render(request, 'season.html')
+
+def information(request):
+    return render(request, 'information.html')
+
+def drink_detail(request, drink_id):
+    drink = get_object_or_404(Tea,id=drink_id)
+    # 获取茶饮的所有相关信息
+    tea_info = {
+        'tea': drink,
+        'effect': drink.effects,
+        'brewing_method': drink.brewing_method,
+        'precautions': drink.precautions,
+
+    }
+    return render(request, 'drink_detail.html', tea_info)
+
+
+def dietary_detail(request, dietary_id):
+    dietary_info = DietaryInfo.objects.get(id=dietary_id)
+    return render(request, 'shipu_detail.html', {'dietary_info': dietary_info})
+
+
+def news_detail(request, slug):
+    news = get_object_or_404(News, slug=slug)
+
+    # 自动 +1 阅读量（避免并发冲突）
+    News.objects.filter(pk=news.pk).update(read_count=F('read_count') + 1)
+    news.refresh_from_db()
+
+    # 上一篇和下一篇文章
+    previous_news = News.objects.filter(id__lt=news.id).order_by('-id').first()
+    next_news = News.objects.filter(id__gt=news.id).order_by('id').first()
+
+    # 热门文章（按阅读量排序）
+    hot_news = News.objects.order_by('-read_count')[:5]
+
+    return render(request, 'news.html', {
+        'news': news,
+        'previous_news': previous_news,
+        'next_news': next_news,
+        'hot_news': hot_news,
+    })
+from django.core.paginator import Paginator
+
+
+def dietary_list(request):
+    recipes = DietaryInfo.objects.all().order_by('-created_at')
+    top10_articles = DietaryInfo.objects.order_by('-read_count')[:10]
+
+    paginator = Paginator(recipes, 8)  # 每页8个
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'dietary_list.html', {
+        'page_obj': page_obj,
+        'top10_articles': top10_articles
+    })
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib import messages
+
+from django.contrib.auth import logout as auth_logout
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            auth_login(request, user)
+            return redirect('index')
+        else:
+            messages.error(request, '用户名或密码错误')
+            return render(request, 'login.html')
+    
+    return render(request, 'login.html')
+
+def logout(request):
+    auth_logout(request)
+    return redirect('index')
+
+def aboutus(request):
+    return render(request, 'aboutus.html')
+
+def tools(request):
+    return render(request, 'tools.html')
+def tools_BMI(request):
+    return render(request, 'tools_BMI.html')
+def tools_heat(request):
+    return render(request, 'tools_heat.html')
+def ditu(request):
+    return render(request, 'ditu.html')
+def terms(request):
+    return render(request, 'terms.html')
+def privacy(request):
+    return render(request, 'privacy.html')
+def relation(request):
+    return render(request, 'relation.html')
+def tea_culture(request):
+    return render(request, 'tea_culture.html')
+def health_tea(request):
+    return render(request, 'health_tea.html')
+def Untitled(request):
+    return render(request, 'Untitled.html')
+def seasonal_tea(request):
+    return render(request, 'seasonal_tea.html')
+@login_required
+@login_required
+def profile(request):
+    # 轮播图数据
+    slides = [
+        {"image": "https://dummyimage.com/1200x400/ddd/aaa", "alt": "轮播图1"},
+        {"image": "https://dummyimage.com/1200x400/ddd/aaa", "alt": "轮播图2"},
+        {"image": "https://dummyimage.com/1200x400/ddd/aaa", "alt": "轮播图3"}
+    ]
+
+    # 当前用户文章
+    user_articles = News.objects.filter(author=request.user).order_by('-id')
+
+    # 热榜数据（可改为按阅读量排序的前几条）
+    hot_articles = News.objects.order_by('-read_count')[:4]
+
+    context = {
+        'slides': slides,
+        'articles': user_articles,
+        'hot_articles': hot_articles,  # 添加热点文章列表
+    }
+    return render(request, 'space.html', context)
+
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
+from .models import News
+
+@csrf_exempt
+@login_required
+def news_post(request):
+    if request.method == 'POST':
+        try:
+            title = request.POST.get('title')
+            slug = request.POST.get('slug')
+            content = request.POST.get('content')
+            image_path = request.POST.get('image_path', '')
+            source = request.POST.get('source', '新浪健康')
+
+            News.objects.create(
+                title=title,
+                slug=slug,
+                content=content,
+                image_path=image_path,
+                source=source,
+                date=timezone.now(),
+                author=request.user
+            )
+
+            return JsonResponse({'success': True})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    else:
+        return JsonResponse({'success': False, 'error': 'Only POST allowed'})

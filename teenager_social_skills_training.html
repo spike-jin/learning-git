@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>婴幼儿营养需求指南</title>
+    
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            background-color: #2c3e50;
+            box-shadow: 0 2px 10px rgba(190, 189, 189, 0.1);
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fffefe;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            padding-right: 7%;
+        }
+        
+        .contact {
+            margin-right: 20px;
+            font-size: 14px;
+        }
+        
+        .contact a {
+            text-decoration: none;
+            color: #fdfcfc;
+            margin: 0 10px;
+        }
+        
+        .contact a:hover {
+            color: #ff6a00;
+        }
+        
+        .button-group {
+            display: flex;
+        }
+        
+        .login-btn {
+            margin-right: 15px;
+            padding: 8px 20px;
+            background-color: transparent;
+            border: 1px solid #ff6a00;
+            color: #ff6a00;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .login-btn:hover {
+            background-color: #ff6a00;
+            color: white;
+        }
+        
+        .register-btn {
+            padding: 8px 20px;
+            background-color: #ff6a00;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .register-btn:hover {
+            background-color: #e65c00;
+        }
+        
+        .main-nav {
+            background-color: #f8f8f8;
+            padding: 0px 50px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-icon {
+            width: 70px;
+            height: 70px;
+            padding-left: 11%;
+        }
+        .nav-icon img {
+            width: 80px;
+            height: 80px;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            padding-right: 7%;
+            
+        }
+        .menu-toggle{display:none}
+        .nav-menu li {
+            margin: 0 30px;
+        }
+        
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+        }
+        
+        .nav-menu a:hover, 
+        .nav-menu a.active {
+            color: #ff6a00;
+        }
+        
+        .nav-menu a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff6a00;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        @media (max-width: 1200px) {
+            .nav-menu li {
+            margin: 0 20px;
+        }
+        }
+        @media (max-width: 1020px) {
+            .nav-menu li {
+            margin: 0 10px;
+        }
+        }       
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 870px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .nav-icon{display:none}
+            .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 30px;
+        }
+            .nav-menu {
+                display: none;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 20px 0;
+                background-color: #f8f8f8;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu li {
+                margin: 0 15px;
+            }
+        }
+
+        /* 社交能力培养相关 CSS */
+        .social-skills-section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-skills-section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .social-skills-section h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .social-skills-section p {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .social-skills-section p:hover {
+            color: #ff6a00;
+            transition: color 0.3s ease;
+        }
+
+        /* 设置链接点击前和点击后的颜色 */
+        .content a:link {
+            color: #6C757D;/* 点击前颜色 */
+        }
+
+        .content a:visited {
+            color: #434a50; /* 点击后颜色 */
+        }
+
+        /* 底部 footer */
+        .footer { 
+            background-color: #f4f4f4; 
+            padding: 10px; 
+            text-align: center; 
+        } 
+
+        .footer a { 
+            color: #333; 
+            text-decoration: none; 
+            margin: 0 15px; 
+        } 
+
+        .footer-links {
+            background-color: #f4f4f4; 
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 5px 0;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .footer-links a {
+            color: #333; 
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .footer-links a:hover {
+            color: rgb(22, 22, 22);
+        }
+        
+        .footer-links a:not(:last-child)::after {
+            content: "|";
+            margin-left: 10px;
+            color: #666;
+        }
+        
+        /* 版权声明区域样式 */ 
+        .copyright { 
+            background-color: #f4f4f4; 
+            padding: 8px 15px; 
+            text-align: center; 
+            font-size: 12px; 
+            color: #666; 
+        } 
+
+         /* 返回顶部按钮 */
+         #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        #backToTopBtn.show {
+            opacity: 1;
+        }
+
+        #backToTopBtn img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 0 50px 0 20px;
+            }
+             .logo {
+            padding-left: 7%;
+            }
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-right {
+                margin-left: 45px;
+            }
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            .services {
+                display: none;
+            }
+
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+                padding-right: 50px;
+            }
+            .hamburger {
+                padding: 0;
+    
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .contact a {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+            
+            .nav-icon {
+                padding-left: 5%;
+            }
+            
+            .nav-menu {
+                padding: 10px 0;
+            }
+            .logo-text {
+            font-size: 19px;
+            }
+        }
+         @media (max-width: 390px) {
+            .logo-text {
+            font-size: 16px;
+
+        }
+        }
+    </style>
+</head>
+<body>
+    <!--头部-->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+
+                <span class="logo-text">饮食之道</span>
+            </a>
+        </div>
+       <div class="header-right">
+           <div class="button-group">
+                <a href="login-register.html?action=signin" class="login-btn">登录</a>
+                <a href="login-register.html?action=register" class="register-btn">注册</a>
+            </div>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+             
+        
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-icon">
+                <img src="images/logo.png" alt="饮食之道">
+            </div>
+            <ul class="nav-menu">
+               <li><a href="index.html">首页</a></li>
+                <li><a href="dietary.html">食疗养生</a></li>
+                <li><a href="drink.html">养生茶饮</a></li>
+                <li><a href="newest.html" class="active">养生社区</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 社交能力培养内容 -->
+    <div class="content">
+        <h1>青少年社交能力培养</h1>
+        <p><a href="adolesecent.html">点击此处查看更多青少年相关信息</a></p>
+
+        <div class="social-skills-section">
+            <h2>社交能力对青少年的重要性</h2>
+            <p>良好的社交能力对青少年的成长和发展至关重要。它不仅有助于青少年建立深厚的友谊，还能帮助他们更好地融入集体，提高自信心和自我认同感。此外，具备出色的社交能力还能为青少年未来的职业发展和人际关系打下坚实的基础。</p>
+        </div>
+
+        <div class="social-skills-section">
+            <h2>提升沟通技巧</h2>
+            <h3>学会倾听</h3>
+            <p>在与他人交流时，要专注地倾听对方的讲话，给予对方充分的关注。不要打断对方，用点头、眼神交流等方式表示你在认真倾听。例如，当朋友向你倾诉烦恼时，耐心听完他的话，再给予回应。</p>
+            <h3>清晰表达</h3>
+            <p>表达自己的想法和观点时，要尽量清晰、简洁。避免使用过于复杂或模糊的语言，让对方能够准确理解你的意思。可以在说话前先组织好语言，确保表达有条理。</p>
+            <h3>注意语气和肢体语言</h3>
+            <p>语气要温和、友善，避免使用生硬或攻击性的语气。同时，注意自己的肢体语言，保持良好的姿势，微笑、眼神接触等都能增强沟通效果。</p>
+        </div>
+
+        <div class="social-skills-section">
+            <h2>培养同理心</h2>
+            <h3>理解他人感受</h3>
+            <p>尝试站在他人的角度去思考问题，理解他们的感受和需求。当朋友遇到困难时，设身处地为他们着想，给予关心和支持。</p>
+            <h3>尊重差异</h3>
+            <p>每个人都有自己的性格、观点和生活方式，要尊重这些差异。不要因为与自己不同就排斥他人，而是要学会欣赏和包容。</p>
+        </div>
+
+        <div class="social-skills-section">
+            <h2>参与社交活动</h2>
+            <h3>加入兴趣小组</h3>
+            <p>根据自己的兴趣爱好，加入一些社团或兴趣小组，如绘画小组、音乐社团等。在这些活动中，你可以结识到志同道合的朋友，锻炼自己的社交能力。</p>
+            <h3>参加志愿者活动</h3>
+            <p>参与志愿者活动不仅能为社会做出贡献，还能让你接触到不同背景的人，拓宽自己的社交圈子。例如，参加社区义工、环保活动等。</p>
+            <h3>组织聚会</h3>
+            <p>可以尝试组织一些小型的聚会，邀请朋友和同学参加。在组织和主持聚会的过程中，你可以锻炼自己的组织能力和社交技巧。</p>
+        </div>
+
+        <div class="social-skills-section">
+            <h2>建立自信</h2>
+            <h3>认识自己的优点</h3>
+            <p>每个人都有自己的优点和长处，要学会发现和认可自己的优点。可以将自己的优点写下来，经常看看，增强自信心。</p>
+            <h3>勇于尝试新事物</h3>
+            <p>不要害怕失败，勇于尝试新的社交情境和活动。每一次尝试都是一次成长的机会，通过不断地挑战自己，你的自信心会逐渐增强。</p>
+            <h3>接受自己的不足</h3>
+            <p>每个人都有不足之处，要学会接受自己的不完美。不要过分苛责自己，而是要努力改进和提升自己。</p>
+        </div>
+
+        <div class="social-skills-section">
+            <h2>处理社交冲突</h2>
+            <h3>保持冷静</h3>
+            <p>当与他人发生冲突时，首先要保持冷静，不要让情绪控制自己。深呼吸，让自己平静下来，再去解决问题。</p>
+            <h3>积极沟通</h3>
+            <p>与对方坦诚地交流，表达自己的感受和想法，同时也要倾听对方的意见。通过沟通，找到双方都能接受的解决方案。</p>
+            <h3>学会妥协</h3>
+            <p>在一些非原则性问题上，学会妥协和让步。这并不意味着你软弱，而是体现了你的大度和智慧，有助于维护良好的人际关系。</p>
+        </div>
+    </div>
+
+
+     <!-- 底部 footer -->
+     <div class="footer"> 
+        <a href="gywm.html">关于我们</a> 
+        <a href="lxwm.html">联系我们</a> 
+        <a href="privacy.html">隐私政策</a> 
+        <a href="terms.html">使用条款</a> 
+        <a href="ditu.html">网站地图</a> 
+        <a href="liuyan.html">留言</a>
+    </div> 
+     <!-- 友情链接 -->
+    <div class="footer-links">
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+        <a href="#">友情链接</a>
+    </div>
+    <!-- 版权声明 -->
+    <div class="copyright">
+      本网站所有信息未经授权禁止转载、摘编、复制及建立镜像，违者将依法追究法律责任。
+    <br>
+      违法和不良信息举报电话：400-123-4567 举报邮箱：jubao@example.com
+    <br>
+    &copy;Copyright 2025 - 2026 饮食之道 All Rights Reserved.
+    <br>粤ICP备2025410119号-1
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTopBtn">
+        <img src="images/胡萝卜-Carrot.png" alt="返回顶部">
+    </button>
+    <script>
+        // 返回顶部功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+  
+        // 汉堡菜单功能
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            const mainMenu = document.querySelector('.nav-menu');
+            if (mainMenu.style.display === 'flex') {
+                mainMenu.style.display = 'none';
+            } else {
+                mainMenu.style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>

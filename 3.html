@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="养血,养颜,开胃,补充维生素，养心安神,体质,季节">
+  <meta name="tescription" content="注重养血之道,追求养颜之美,开胃增食,及时补充维生素,养心安神以舒缓压力。根据体质差异,顺应季节变化,精心调配膳食,让身体在每一个季节都能得到恰到好处的滋养。从内而外散发自然光彩,增强体质,平衡身心,享受健康生活带来的美好,让每一次味蕾的邂逅都成为呵护自我的温馨时刻,开启科学养生的新旅程。">
+  <title>饮食之道-饮品</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/drink.css' %}">
+  <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
+  <link href="https://cdn.bootcdn.net/ajax/libs/Swiper/11.0.5/swiper-bundle.css" rel="stylesheet">
+</head>
+
+<body>
+  {% include 'base/header.html' %}
+  <!-- 饮品页面主体内容 -->
+  <main role="main">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        {% for item in carousel_items %}
+        <div class="swiper-slide">
+          <div class="jumbotron">
+            <div class="container" style="height: 400px;">
+              <h1 class="display-3">{{ item.title }}</h1>
+              <p>{{ item.description }}</p>
+              <p><a class="btn btn-primary btn-lg" href="{{ item.link }}" role="button">Learn more »</a></p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+    <div class="swiper-scrollbar" style="position: unset;"></div>
+  
+
+
+
+    <div class="container">
+      <!-- Example row of columns -->
+
+      <div class="row">
+        {% for category in categories %}
+        <div class="col-md-3" style="padding: 10px;">
+          <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1970f6c94cf%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1970f6c94cf%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.5%22%20y%3D%2296.24000034332275%22%3EImage%20cap%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+          <h2>{{ category.name }}</h2>
+          <p>{{ category.description }}</p>
+          <p><a class="btn btn-secondary" href={{ category.slug }} role="button">View details »</a></p>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div> <!-- /container -->
+
+    <!-- <div class="container">
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+        <div class="media text-muted pt-3">
+          <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+            <title>Placeholder</title>
+            <rect fill="#007bff" width="100%" height="100%"></rect><text fill="#007bff" dy=".3em" x="50%"
+              y="50%">32x32</text>
+          </svg>
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@username</strong>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+            condimentum nibh, ut fermentum massa justo sit amet risus.
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+            <title>Placeholder</title>
+            <rect fill="#e83e8c" width="100%" height="100%"></rect><text fill="#e83e8c" dy=".3em" x="50%"
+              y="50%">32x32</text>
+          </svg>
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@username</strong>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+            condimentum nibh, ut fermentum massa justo sit amet risus.
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+            <title>Placeholder</title>
+            <rect fill="#6f42c1" width="100%" height="100%"></rect><text fill="#6f42c1" dy=".3em" x="50%"
+              y="50%">32x32</text>
+          </svg>
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@username</strong>
+            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+            condimentum nibh, ut fermentum massa justo sit amet risus.
+          </p>
+        </div>
+        <small class="d-block text-right mt-3">
+          <a href="#">All updates</a>
+        </small>
+      </div>
+    </div> -->
+
+    {% for category, products in recommendations.items %}
+    <div class="container">
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">
+          {% if category == "qinggan_mingmu" %}清肝明目推荐
+          {% elif category == "jianfei_jiangzhi" %}减肥降脂推荐
+          {% elif category == "buqi_yangxue" %}补气养血推荐
+          {% else %}其他推荐
+          {% endif %}
+        </h6>
+  
+        {% if products %}
+          {% for product in products %}
+            <div class="media text-muted pt-3">
+              <img class="bd-placeholder-img mr-2 rounded" width="100" height="100" src="{% static product.image_url %}" alt="{{ product.name }}">
+              <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                  <strong class="text-gray-dark">{{ product.name }}</strong>
+                  <a href="#">前往</a>
+                </div>
+                <span class="d-block">暂无描述</span> <!-- 可扩展为 product.description -->
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="text-muted pt-3">暂无推荐内容</p>
+        {% endif %}
+  
+        <small class="d-block text-right mt-3">
+          <a href="#">了解更多</a>
+        </small>
+      </div>
+    </div>
+  {% endfor %}
+
+
+  </main>
+  {% include 'base/footer.html' %}
+</body>
+
+</html>
+
+<script src="{% static 'js/swiper-bundle.js'%}"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    scrollbar: {
+      el: ".swiper-scrollbar",
+      hide: true,
+    },
+  });
+  document.querySelector('.hamburger').addEventListener('click', () => {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        });
+</script>
+
+</body>
+
+</html>
+
+<!-- Path: DjangoProject/templates/base/footer.html -->
+ data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1970f6c94cf%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1970f6c94cf%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.5%22%20y%3D%2296.24000034332275%22%3EImage%20cap%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" 
